@@ -4,11 +4,10 @@ import Home from "./Components/Home"
 function App() {
   return (
       <Routes>
-        <Route path="/home" element={<Home></Home>}></Route>
-        <Route path ="/actividades" element={<Home></Home>}></Route>
+        <Route path="/" element={<Home/>}/>
+        <Route path ="/actividades" element={<Home/>}></Route>
       </Routes>
-   
-     );
+  );
   
 }
 
