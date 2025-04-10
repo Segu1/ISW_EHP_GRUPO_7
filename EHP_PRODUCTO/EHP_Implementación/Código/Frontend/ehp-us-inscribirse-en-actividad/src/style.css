@@ -16,6 +16,7 @@
     --color-white: #fff;
     --spacing: 0.25rem;
     --radius-lg: 0.5rem;
+    --radius-2xl: 1rem;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
   }
@@ -244,12 +245,36 @@
   .rounded {
     border-radius: 0.25rem;
   }
+  .rounded-2xl {
+    border-radius: var(--radius-2xl);
+  }
   .rounded-lg {
     border-radius: var(--radius-lg);
   }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
+  }
+  .bg-\[\#6BAB90\] {
+    background-color: #6BAB90;
+  }
+  .bg-\[\#042A2B\] {
+    background-color: #042A2B;
+  }
+  .bg-\[\#042A\] {
+    background-color: #042A;
+  }
+  .bg-\[\#042\] {
+    background-color: #042;
+  }
+  .bg-\[\#E1F0C4\] {
+    background-color: #E1F0C4;
+  }
+  .bg-\[\#E1F\] {
+    background-color: #E1F;
+  }
+  .bg-\[\#\] {
+    background-color: #;
   }
   .bg-blue-500 {
     background-color: var(--color-blue-500);
@@ -268,6 +293,9 @@
   }
   .bg-red-400 {
     background-color: var(--color-red-400);
+  }
+  .bg-white {
+    background-color: var(--color-white);
   }
   .p-5 {
     padding: calc(var(--spacing) * 5);
