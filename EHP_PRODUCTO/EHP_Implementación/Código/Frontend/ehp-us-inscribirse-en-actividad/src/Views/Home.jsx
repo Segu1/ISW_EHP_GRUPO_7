@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
-
+import { useNavigate } from "react-router";
+//import pineTree from "../assets/pine-tree.png"
+import homeTreeImg from "../assets/homeTreeImg.png"
 
 function Home() {
 
@@ -27,7 +28,7 @@ function Home() {
     <Navbar site="Inicio"></Navbar>
     <section>
       <div className="mx-auto justify-center items-center pt-20">
-        <img src="./homeTreeImg.png" alt="Home tree img" className="text-center shadow-2xl p-10 rounded-2xl h-120 mx-auto bg-[#042A2B]"  />
+        <img src={homeTreeImg} alt="Home tree img" className="text-center shadow-2xl p-10 rounded-2xl h-120 mx-auto bg-[#042A2B]"  />
       <button    
       onMouseEnter={handleHover}
       onMouseLeave={handleLeave}
