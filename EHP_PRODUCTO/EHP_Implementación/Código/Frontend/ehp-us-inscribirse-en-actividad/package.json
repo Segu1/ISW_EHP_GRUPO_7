@@ -8,6 +8,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "bootstrap-icons": "^1.11.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.5.0",
@@ -18,7 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "tailwind": "npx @tailwindcss/cli -i ./src/style-input.css -o ./src/style.css --watch", 
+    "tailwind": "npx @tailwindcss/cli -i ./src/style-input.css -o ./src/style.css --watch",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

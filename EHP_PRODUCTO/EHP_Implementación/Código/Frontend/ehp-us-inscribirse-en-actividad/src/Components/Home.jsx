@@ -1,29 +1,40 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
+
 
 function Home() {
 
+    const [btnActividades, setBtnActividades] = useState("Actividades");
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+      navigate('/actividades');
+    };
+
     const handleHover = () => {
-      const btnActividades = document.getElementById('btnActividades');
-      btnActividades.textContent = "Inscribirme!"
+      setBtnActividades("Inscribirme!")
     };
   
     const handleLeave = () => {
-      const btnActividades = document.getElementById('btnActividades');
-      btnActividades.textContent = "Actividades"
+      setBtnActividades("Actividades")
     };
+
+
 
   return (
     <>
-      <body className="">
+    <Navbar site="Inicio"></Navbar>
+    <section>
       <div className="mx-auto justify-center items-center pt-20">
       <img src="./homeTreeImg.png" alt="Home tree img" className="text-center shadow-2xl p-10 rounded-2xl h-120 mx-auto bg-[#042A2B]"  />
       <button    
-      id="btnActividades"
       onMouseEnter={handleHover}
       onMouseLeave={handleLeave}
-      className="mx-auto block bg-green-800 text-white px-10 py-2 mt-10 rounded hover:shadow-4xl hover:bg-green-500">Actividades</button>
+      onClick={handleClick}
+      className="mx-auto block bg-green-800 text-white px-10 py-2 mt-10 rounded hover:shadow-4xl hover:bg-green-500">{btnActividades}</button>
       </div>
-       </body>
+    </section>
     </>
   );
 }
