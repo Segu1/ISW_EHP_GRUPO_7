@@ -4,7 +4,7 @@ function Actividades() {
   const datos = [
     {
         id: 1,
-        nombre: "Jardineria",
+        nombre: "Jardinería",
         cupos: 10,
         desde: "2025-05-11T10:48",
         hasta: "2025-05-11T11:30",
@@ -12,7 +12,7 @@ function Actividades() {
     },
     {
         id: 2,
-        nombre: "Jardineria",
+        nombre: "Jardinería",
         cupos: 10,
         desde: "2025-05-11T12:00",
         hasta: "2025-05-11T12:30",
@@ -20,7 +20,7 @@ function Actividades() {
     },
     {
         id: 3,
-        nombre: "Jardineria",
+        nombre: "Jardinería",
         cupos: 10,
         desde: "2025-05-11T13:00",
         hasta: "2025-05-11T13:45",
@@ -28,7 +28,7 @@ function Actividades() {
     },
     {
         id: 4,
-        nombre: "Jardineria",
+        nombre: "Jardinería",
         cupos: 10,
         desde: "2025-05-11T14:00",
         hasta: "2025-05-11T14:30",
@@ -36,7 +36,7 @@ function Actividades() {
     },
     {
         id: 5,
-        nombre: "Jardineria",
+        nombre: "Jardinería",
         cupos: 10,
         desde: "2025-05-11T15:00",
         hasta: "2025-05-11T15:30",
@@ -97,6 +97,166 @@ function Actividades() {
     desde: "2025-05-11T15:00",
     hasta: "2025-05-11T15:30",
     inscriptos: 10
+},
+  {
+  id: 12,
+  nombre: "Tirolesa",
+  cupos: 10,
+  desde: "2025-05-11T15:00",
+  hasta: "2025-05-11T15:30",
+  inscriptos: 10
+},
+{
+  id: 13,
+  nombre: "Safari",
+  cupos: 8,
+  desde: "2025-05-12T10:00",
+  hasta: "2025-05-12T11:00",
+  inscriptos: 6
+},
+{
+  id: 14,
+  nombre: "Jardinería",
+  cupos: 12,
+  desde: "2025-05-13T09:30",
+  hasta: "2025-05-13T10:30",
+  inscriptos: 9
+},
+{
+  id: 15,
+  nombre: "Palestra",
+  cupos: 15,
+  desde: "2025-05-14T14:00",
+  hasta: "2025-05-14T15:00",
+  inscriptos: 13
+},
+{
+  id: 16,
+  nombre: "Tirolesa",
+  cupos: 10,
+  desde: "2025-05-15T15:00",
+  hasta: "2025-05-15T15:30",
+  inscriptos: 8
+},
+{
+  id: 17,
+  nombre: "Safari",
+  cupos: 8,
+  desde: "2025-05-16T10:00",
+  hasta: "2025-05-16T11:00",
+  inscriptos: 5
+},
+{
+  id: 18,
+  nombre: "Jardinería",
+  cupos: 12,
+  desde: "2025-05-17T09:30",
+  hasta: "2025-05-17T10:30",
+  inscriptos: 12
+},
+{
+  id: 19,
+  nombre: "Palestra",
+  cupos: 15,
+  desde: "2025-05-18T14:00",
+  hasta: "2025-05-18T15:00",
+  inscriptos: 10
+},
+{
+  id: 20,
+  nombre: "Tirolesa",
+  cupos: 10,
+  desde: "2025-05-19T15:00",
+  hasta: "2025-05-19T15:30",
+  inscriptos: 9
+},
+{
+  id: 21,
+  nombre: "Safari",
+  cupos: 8,
+  desde: "2025-05-20T10:00",
+  hasta: "2025-05-20T11:00",
+  inscriptos: 8
+},
+{
+  id: 22,
+  nombre: "Jardinería",
+  cupos: 12,
+  desde: "2025-05-21T09:30",
+  hasta: "2025-05-21T10:30",
+  inscriptos: 11
+},
+{
+  id: 23,
+  nombre: "Palestra",
+  cupos: 15,
+  desde: "2025-05-22T14:00",
+  hasta: "2025-05-22T15:00",
+  inscriptos: 14
+},
+{
+  id: 24,
+  nombre: "Tirolesa",
+  cupos: 10,
+  desde: "2025-05-23T15:00",
+  hasta: "2025-05-23T15:30",
+  inscriptos: 7
+},
+{
+  id: 25,
+  nombre: "Safari",
+  cupos: 8,
+  desde: "2025-05-24T10:00",
+  hasta: "2025-05-24T11:00",
+  inscriptos: 8
+},
+{
+  id: 26,
+  nombre: "Jardinería",
+  cupos: 12,
+  desde: "2025-05-25T09:30",
+  hasta: "2025-05-25T10:30",
+  inscriptos: 10
+},
+{
+  id: 27,
+  nombre: "Palestra",
+  cupos: 15,
+  desde: "2025-05-26T14:00",
+  hasta: "2025-05-26T15:00",
+  inscriptos: 12
+},
+{
+  id: 28,
+  nombre: "Tirolesa",
+  cupos: 10,
+  desde: "2025-05-27T15:00",
+  hasta: "2025-05-27T15:30",
+  inscriptos: 10
+},
+{
+  id: 29,
+  nombre: "Safari",
+  cupos: 8,
+  desde: "2025-05-28T10:00",
+  hasta: "2025-05-28T11:00",
+  inscriptos: 7
+},
+{
+  id: 30,
+  nombre: "Jardinería",
+  cupos: 12,
+  desde: "2025-05-29T09:30",
+  hasta: "2025-05-29T10:30",
+  inscriptos: 6
+},
+{
+  id: 31,
+  nombre: "Palestra",
+  cupos: 15,
+  desde: "2025-05-30T14:00",
+  hasta: "2025-05-30T15:00",
+  inscriptos: 15
 }
 ];
 
@@ -131,7 +291,7 @@ function Actividades() {
         <Navbar site="Actividades" />
         {/* Jardinería */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto px-4 sm:h-1/8">
-          {transformData(datos, "Jardineria").map((jardineria) => (
+          {transformData(datos, "Jardinería").map((jardineria) => (
             <div
               key={jardineria.id}
               className="font-mono relative bg-[#384252] shadow-2xl mb-4 rounded-md font-semibold w-full text-center p-1 hover:bg-[#8cd19d] hover:p-3"
@@ -139,7 +299,7 @@ function Actividades() {
               <div className="text-[#ffffdd] group text-shadow-lg/20">
                 <p className="inline-block relative mr-50 bg-[#c0efd2] w-full rounded-2xl">{jardineria.nombre}</p>
                 <p className={`inline-block m-5 ${jardineria.inscriptos <= (jardineria.cupos * 0.6) ? 'bg-[#d4f1db]' : 'bg-red-300'} rounded-xl p-2`}>
-                  Cupos: {jardineria.inscriptos} / {jardineria.cupos}
+                  Cupos: {jardineria.inscriptos}/{jardineria.cupos}
                 </p>
                 <p className="inline-block bg-[#d4f1db] rounded-xl p-2">{getFormatedDate(jardineria.desde)} - {getFormatedDate(jardineria.hasta)}</p>
                 {jardineria.inscriptos <= (jardineria.cupos * 0.6) ? <p></p> : <p className="p-1 group-hover:bg-[#384252] rounded-2xl m-2">Últimos lugares</p>}
@@ -158,7 +318,7 @@ function Actividades() {
               <div className="text-[#ffffdd] group text-shadow-lg/20">
                 <p className="inline-block relative mr-50 bg-[#6290C3] w-full rounded-2xl">{tirolesa.nombre}</p>
                 <p className={`inline-block m-5 ${tirolesa.inscriptos <= (tirolesa.cupos * 0.6) ? 'bg-[#d4f1db]' : 'bg-red-300'} rounded-xl p-2`}>
-                  Cupos: {tirolesa.inscriptos} / {tirolesa.cupos}
+                  Cupos: {tirolesa.inscriptos}/{tirolesa.cupos}
                 </p>
                 <p className="inline-block bg-[#d4f1db] rounded-xl p-2">{getFormatedDate(tirolesa.desde)} - {getFormatedDate(tirolesa.hasta)}</p>
                 {tirolesa.inscriptos <= (tirolesa.cupos * 0.6) ? <p></p> : <p className="p-1 group-hover:bg-[#384252] rounded-2xl m-2">Últimos lugares</p>}
@@ -174,12 +334,12 @@ function Actividades() {
           {transformData(datos, "Palestra").map((palestra) => (
             <div
               key={palestra.id}
-              className="font-mono relative bg-[#1A1B41] shadow-2xl mb-4 rounded-md font-semibold w-full text-center p-1 hover:bg-[#8cd19d] hover:p-3"
+              className="font-mono relative bg-[#88366a] shadow-2xl mb-4 rounded-md font-semibold w-full text-center p-1 hover:bg-[#8cd19d] hover:p-3"
             >
               <div className="text-[#ffffdd] group text-shadow-lg/20">
-                <p className="inline-block relative mr-50 bg-[#6290C3] w-full rounded-2xl">{tirolesa.nombre}</p>
+                <p className="inline-block relative mr-50 bg-[#752559] w-full rounded-2xl">{palestra.nombre}</p>
                 <p className={`inline-block m-5 ${palestra.inscriptos <= (palestra.cupos * 0.6) ? 'bg-[#d4f1db]' : 'bg-red-300'} rounded-xl p-2`}>
-                  Cupos: {palestra.inscriptos} / {tirolesa.cupos}
+                  Cupos: {palestra.inscriptos}/{palestra.cupos}
                 </p>
                 <p className="inline-block bg-[#d4f1db] rounded-xl p-2">{getFormatedDate(palestra.desde)} - {getFormatedDate(palestra.hasta)}</p>
                 {palestra.inscriptos <= (palestra.cupos * 0.6) ? <p></p> : <p className="p-1 group-hover:bg-[#384252] rounded-2xl m-2">Últimos lugares</p>}
@@ -188,39 +348,21 @@ function Actividades() {
           ))}
         </div>
 
-          {/* Palestra */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto px-4 ">
-          {transformData(datos, "Palestra").filter(activity => (Number(p.inscriptos) < Number(p.cupos) || palestra.desde) ).map((palestra) => (
-            <div
-              key={palestra.id}
-              className={`font-mono relative bg-[#1A1B41] shadow-2xl mb-4 rounded-md font-semibold w-full text-center p-1 hover:bg-[#8cd19d] hover:p-3`}
-            >
-              <div className="text-[#ffffdd] group text-shadow-lg/20">
-                <p className="inline-block relative mr-50 bg-[#6290C3] w-full rounded-2xl">{tirolesa.nombre}</p>
-                <p className={`inline-block m-5 ${palestra.inscriptos <= (palestra.cupos * 0.6) ? 'bg-[#d4f1db]' : 'bg-red-300'} rounded-xl p-2`}>
-                  Cupos: {palestra.inscriptos} / {palestra.cupos}
-                </p>
-                <p className="inline-block bg-[#d4f1db] rounded-xl p-2">{getFormatedDate(palestra.desde)} - {getFormatedDate(palestra.hasta)}</p>
-                {palestra.inscriptos <= (palestra.cupos * 0.6) ? <p></p> : <p className="p-1 group-hover:bg-[#384252] rounded-2xl m-2">Últimos lugares</p>}
-              </div>
-            </div>
-          ))}
-        </div>
 
           {/* Safari */}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto px-4 ">
           {transformData(datos, "Safari").map((safari) => (
             <div
               key={safari.id}
-              className="font-mono relative bg-[#1A1B41] shadow-2xl mb-4 rounded-md font-semibold w-full text-center p-1 hover:bg-[#8cd19d] hover:p-3"
+              className="font-mono relative bg-[#5B5750] shadow-2xl mb-4 rounded-md font-semibold w-full text-center p-1 hover:bg-[#8cd19d] hover:p-3"
             >
               <div className="text-[#ffffdd] group text-shadow-lg/20">
-                <p className="inline-block relative mr-50 bg-[#6290C3] w-full rounded-2xl">{safari.nombre}</p>
-                <p className={`inline-block m-5 ${safari.inscriptos <= (safari.cupos * 0.6) ? 'bg-[#d4f1db]' : 'bg-red-300'} rounded-xl p-2`}>
-                  Cupos: {safari.inscriptos} / {safari.cupos}
+                <p className="inline-block relative mr-50 bg-[#492C1D] w-full rounded-2xl">{safari.nombre}</p>
+                <p className={`inline-block m-5 ${safari.inscriptos <= (safari.cupos * 0.7) ? 'bg-[#d4f1db]' : 'bg-red-300'} rounded-xl p-2`}>
+                  Cupos: {safari.inscriptos}/{safari.cupos}
                 </p>
-                <p className="inline-block bg-[#d4f1db] rounded-xl p-2">{getFormatedDate(palestra.desde)} - {getFormatedDate(palestra.hasta)}</p>
-                {palestra.inscriptos <= (palestra.cupos * 0.6) ? <p></p> : <p className="p-1 group-hover:bg-[#384252] rounded-2xl m-2">Últimos lugares</p>}
+                <p className="inline-block bg-[#d4f1db] rounded-xl p-2">{getFormatedDate(safari.desde)} - {getFormatedDate(safari.hasta)}</p>
+                {safari.inscriptos <= (safari.cupos * 0.7) ? <p></p> : <p className="p-1 group-hover:bg-[#384252] rounded-2xl m-2">Últimos lugares</p>}
               </div>
             </div>
 
