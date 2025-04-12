@@ -1,4 +1,4 @@
-import Navbar from "./Navbar";
+import Navbar from "../Components/Navbar";
 
 function Actividades() {
   const datos = [
@@ -337,7 +337,7 @@ function Actividades() {
               className="font-mono relative bg-[#88366a] shadow-2xl mb-4 rounded-md font-semibold w-full text-center p-1 hover:bg-[#8cd19d] hover:p-3"
             >
               <div className="text-[#ffffdd] group text-shadow-lg/20">
-                <p className="inline-block relative mr-50 bg-[#752559] w-full rounded-2xl">{palestra.nombre}</p>
+                <p className="inline-block relative mr-50 bg-[##752559] w-full rounded-2xl">{palestra.nombre}</p>
                 <p className={`inline-block m-5 ${palestra.inscriptos <= (palestra.cupos * 0.6) ? 'bg-[#d4f1db]' : 'bg-red-300'} rounded-xl p-2`}>
                   Cupos: {palestra.inscriptos}/{palestra.cupos}
                 </p>
