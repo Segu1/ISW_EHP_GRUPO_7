@@ -5,6 +5,7 @@ import { DatePicker } from "antd";
 import dayjs from "dayjs";
 import { ConfigProvider } from "antd";
 import locale from "antd/locale/es_ES";
+import { create } from "zustand";
 
 const disabledDate = (current) => {
     return current && current < dayjs().startOf('day');
@@ -29,7 +30,16 @@ const tipoActividad = [
     },
 ];
 
+const useStore = create((set) => (
+    {
+        count: 0,
+        inc: () => set((state) => ({count: state.count+1}))
+    }
+))
+
 function Filter() {
+    const counter = useStore((state) => state.count)
+    const incCounter = useStore((state) => state.inc)
     return (
         <>
             <Wrapper>
@@ -45,6 +55,7 @@ function Filter() {
                             format="DD-MM-YYYY"
                         />
                     </ConfigProvider>
+                    <Button onClick={incCounter}>{counter}</Button>
                 </Container>
             </Wrapper>
         </>
