@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router"
 import Home from "./Views/Home"
-import Actividades from "./Components/Actividades"
+import Actividades from "./Views/Actividades"
 
 function App() {
 
