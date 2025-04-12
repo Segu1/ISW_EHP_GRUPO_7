@@ -18,4 +18,16 @@ export class GestorInscripciones{
             throw new Error("Error al guardar la inscripción");
         }
     }
+
+     async buscar_inscripcionSinPk(id_visitante, actividadId){
+            return await Inscripcion.findOne({
+                    where: {
+                      id_visitante: id_visitante,
+                      id_actividad: actividadId
+                    }
+                  })
+        }
+    
+
+   
 }

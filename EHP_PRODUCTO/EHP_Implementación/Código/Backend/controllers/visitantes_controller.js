@@ -8,4 +8,16 @@ export class GestorVisitantes {
     async buscar_visitante(id){
         return await Visitantes.findByPk(id)
     }
+
+    async buscar_visitanteSinPk(dni){
+        return await Visitantes.findOne({ where: { dni: dni } })
+    }
+    async crear_visitante(persona){
+        return await Visitantes.create( {
+            nombre: persona.nombre,
+            dni: persona.dni,
+            edad: persona.edad,
+            talla_vestimenta: persona.talla_vestimenta || null 
+        })
+    }
 }
