@@ -2,12 +2,22 @@ import { useEffect } from "react";
 import { Container } from "../../assets/css/Cards.css";
 import { useActivitiesStore } from "../../store/activities";
 import Card from "./Card";
+import { useRef } from "react";
 
 function Cards() {
     const getData = useActivitiesStore();
+    const refOptionCategory = useRef()
 
     useEffect(() => {
-        getData.execute();
+        const fetchAndFilter = async () => {
+            await getData.execute();
+            const defaultCategory = refOptionCategory.current?.value;
+            if (defaultCategory) {
+                getData.filterActivities(defaultCategory)
+            }
+        };
+
+        fetchAndFilter();
     }, []);
 
     return (
@@ -15,6 +25,7 @@ function Cards() {
             Actividades
             <select
                 id="categories"
+                ref={refOptionCategory}
                 onChange={(event) =>
                     getData.filterActivities(event.target.value)
                 }
