@@ -1,5 +1,6 @@
 import { sequelize } from "./database.js";
 import { DataTypes } from "sequelize";
+import { Inscripcion } from "./inscripciones.js";
 
 export const Actividades = sequelize.define('Actividades', {
     id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
@@ -13,6 +14,10 @@ export const Actividades = sequelize.define('Actividades', {
     tableName: 'Actividades',
     timestamps: false
 });
+
+
+Actividades.hasMany(Inscripcion, { foreignKey: 'id_actividad' });
+Inscripcion.belongsTo(Actividades, { foreignKey: 'id_actividad' });
 
 export async function inicializarDatosActividades() {
     await sequelize.sync()
