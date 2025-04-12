@@ -22,7 +22,7 @@ export async function inicializarDatosActividades() {
         {id: 2, nombre: "Safari", cupos: 10, requiere_talla: false, fecha_inicio:"2025-03-21", fecha_fin: "2025-03-22", inscriptos: 0},
         {id: 3, nombre: "Palestra", cupos: 10, requiere_talla: false, fecha_inicio:"2025-03-21", fecha_fin: "2025-03-22", inscriptos: 0},
         {id: 4, nombre: "Jardinería", cupos: 10, requiere_talla: false, fecha_inicio:"2025-03-21", fecha_fin: "2025-03-22", inscriptos: 0},]
-        )
+     )
     };
 
 // inicializarDatosActividades();
