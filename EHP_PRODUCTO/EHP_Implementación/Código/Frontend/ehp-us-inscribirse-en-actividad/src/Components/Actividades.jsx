@@ -88,7 +88,7 @@ function Actividades() {
     cupos: 10,
     desde: "2025-05-11T15:00",
     hasta: "2025-05-11T15:30",
-    inscriptos: 9
+    inscriptos: 10
 },
 {
     id: 12,
@@ -96,23 +96,27 @@ function Actividades() {
     cupos: 10,
     desde: "2025-05-11T15:00",
     hasta: "2025-05-11T15:30",
-    inscriptos: 9
+    inscriptos: 10
 }
 ];
 
 
   const transformData = (array, kind) => {
+    const realTime = new Date("2025-05-11T11:00");
     const filteredArray = array.filter((activity) => activity.nombre === kind);
+    const filterCupos = filteredArray.filter((activity) => activity.cupos > activity.inscriptos);
+    const filterDate = filterCupos.filter((activity) => ((new Date(activity.desde).getTime() > realTime.getTime())));
 
-    filteredArray.forEach((activity) => {
+    filterDate.forEach((activity) => {
       activity.desde = new Date(activity.desde);
       activity.hasta = new Date(activity.hasta);
     });
 
-    filteredArray.sort((a, b) => a.desde - b.desde);
+    filterDate.sort((a, b) => a.desde - b.desde);
 
-    return filteredArray;
+    return filterDate;
   };
+
 
   const getFormatedDate = (fecha) => {
     return fecha.toLocaleString("es-ES", {
@@ -160,6 +164,67 @@ function Actividades() {
                 {tirolesa.inscriptos <= (tirolesa.cupos * 0.6) ? <p></p> : <p className="p-1 group-hover:bg-[#384252] rounded-2xl m-2">Últimos lugares</p>}
               </div>
             </div>
+
+            
+          ))}
+        </div>
+
+              {/* Palestra */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto px-4 ">
+          {transformData(datos, "Palestra").map((palestra) => (
+            <div
+              key={palestra.id}
+              className="font-mono relative bg-[#1A1B41] shadow-2xl mb-4 rounded-md font-semibold w-full text-center p-1 hover:bg-[#8cd19d] hover:p-3"
+            >
+              <div className="text-[#ffffdd] group text-shadow-lg/20">
+                <p className="inline-block relative mr-50 bg-[#6290C3] w-full rounded-2xl">{tirolesa.nombre}</p>
+                <p className={`inline-block m-5 ${palestra.inscriptos <= (palestra.cupos * 0.6) ? 'bg-[#d4f1db]' : 'bg-red-300'} rounded-xl p-2`}>
+                  Cupos: {palestra.inscriptos} / {tirolesa.cupos}
+                </p>
+                <p className="inline-block bg-[#d4f1db] rounded-xl p-2">{getFormatedDate(palestra.desde)} - {getFormatedDate(palestra.hasta)}</p>
+                {palestra.inscriptos <= (palestra.cupos * 0.6) ? <p></p> : <p className="p-1 group-hover:bg-[#384252] rounded-2xl m-2">Últimos lugares</p>}
+              </div>
+            </div>
+          ))}
+        </div>
+
+          {/* Palestra */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto px-4 ">
+          {transformData(datos, "Palestra").filter(activity => (Number(p.inscriptos) < Number(p.cupos) || palestra.desde) ).map((palestra) => (
+            <div
+              key={palestra.id}
+              className={`font-mono relative bg-[#1A1B41] shadow-2xl mb-4 rounded-md font-semibold w-full text-center p-1 hover:bg-[#8cd19d] hover:p-3`}
+            >
+              <div className="text-[#ffffdd] group text-shadow-lg/20">
+                <p className="inline-block relative mr-50 bg-[#6290C3] w-full rounded-2xl">{tirolesa.nombre}</p>
+                <p className={`inline-block m-5 ${palestra.inscriptos <= (palestra.cupos * 0.6) ? 'bg-[#d4f1db]' : 'bg-red-300'} rounded-xl p-2`}>
+                  Cupos: {palestra.inscriptos} / {palestra.cupos}
+                </p>
+                <p className="inline-block bg-[#d4f1db] rounded-xl p-2">{getFormatedDate(palestra.desde)} - {getFormatedDate(palestra.hasta)}</p>
+                {palestra.inscriptos <= (palestra.cupos * 0.6) ? <p></p> : <p className="p-1 group-hover:bg-[#384252] rounded-2xl m-2">Últimos lugares</p>}
+              </div>
+            </div>
+          ))}
+        </div>
+
+          {/* Safari */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto px-4 ">
+          {transformData(datos, "Safari").map((safari) => (
+            <div
+              key={safari.id}
+              className="font-mono relative bg-[#1A1B41] shadow-2xl mb-4 rounded-md font-semibold w-full text-center p-1 hover:bg-[#8cd19d] hover:p-3"
+            >
+              <div className="text-[#ffffdd] group text-shadow-lg/20">
+                <p className="inline-block relative mr-50 bg-[#6290C3] w-full rounded-2xl">{safari.nombre}</p>
+                <p className={`inline-block m-5 ${safari.inscriptos <= (safari.cupos * 0.6) ? 'bg-[#d4f1db]' : 'bg-red-300'} rounded-xl p-2`}>
+                  Cupos: {safari.inscriptos} / {safari.cupos}
+                </p>
+                <p className="inline-block bg-[#d4f1db] rounded-xl p-2">{getFormatedDate(palestra.desde)} - {getFormatedDate(palestra.hasta)}</p>
+                {palestra.inscriptos <= (palestra.cupos * 0.6) ? <p></p> : <p className="p-1 group-hover:bg-[#384252] rounded-2xl m-2">Últimos lugares</p>}
+              </div>
+            </div>
+
+            
           ))}
         </div>
       </>
