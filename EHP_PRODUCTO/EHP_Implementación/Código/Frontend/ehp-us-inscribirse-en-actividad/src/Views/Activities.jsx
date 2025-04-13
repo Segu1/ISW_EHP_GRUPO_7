@@ -1,6 +1,9 @@
 import Navbar from "../Components/Navbar";
+import Filter from "../Components/Filter";
+import { useNavigate } from "react-router-dom";
 
 function Actividades() {
+  const navigate = useNavigate();
   const datos = [
     {
         id: 1,
@@ -266,6 +269,7 @@ function Actividades() {
     const filteredArray = array.filter((activity) => activity.nombre === kind);
     const filterCupos = filteredArray.filter((activity) => activity.cupos > activity.inscriptos);
     const filterDate = filterCupos.filter((activity) => ((new Date(activity.desde).getTime() > realTime.getTime())));
+    
 
     filterDate.forEach((activity) => {
       activity.desde = new Date(activity.desde);
@@ -286,23 +290,30 @@ function Actividades() {
     });
   };
 
+  const recibeDataFromFilters = (categoria, fecha) => {
+    console.log(categoria);
+    console.log(fecha)
+  }
+
   return (
       <>
         <Navbar site="Actividades" />
+        <Filter recibeData={recibeDataFromFilters} />
         {/* Jardinería */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto px-4 sm:h-1/8">
           {transformData(datos, "Jardinería").map((jardineria) => (
             <div
               key={jardineria.id}
               className="font-mono relative bg-[#384252] shadow-2xl mb-4 rounded-md font-semibold w-full text-center p-1 hover:bg-[#8cd19d] hover:p-3"
+              onClick={() => navigate("/actividades/" + jardineria.id)}
             >
               <div className="text-[#ffffdd] group text-shadow-lg/20">
                 <p className="inline-block relative mr-50 bg-[#c0efd2] w-full rounded-2xl">{jardineria.nombre}</p>
-                <p className={`inline-block m-5 ${jardineria.inscriptos <= (jardineria.cupos * 0.6) ? 'bg-[#d4f1db]' : 'bg-red-300'} rounded-xl p-2`}>
+                <p className={`inline-block m-5 ${jardineria.inscriptos <= (jardineria.cupos * 0.7) ? 'bg-[#d4f1db]' : 'bg-red-300'} rounded-xl p-2`}>
                   Cupos: {jardineria.inscriptos}/{jardineria.cupos}
                 </p>
                 <p className="inline-block bg-[#d4f1db] rounded-xl p-2">{getFormatedDate(jardineria.desde)} - {getFormatedDate(jardineria.hasta)}</p>
-                {jardineria.inscriptos <= (jardineria.cupos * 0.6) ? <p></p> : <p className="p-1 group-hover:bg-[#384252] rounded-2xl m-2">Últimos lugares</p>}
+                {jardineria.inscriptos <= (jardineria.cupos * 0.7) ? <p></p> : <p className="p-1 group-hover:bg-[#384252] rounded-2xl m-2">Últimos lugares</p>}
               </div>
             </div>
           ))}
@@ -314,14 +325,15 @@ function Actividades() {
             <div
               key={tirolesa.id}
               className="font-mono relative bg-[#1A1B41] shadow-2xl mb-4 rounded-md font-semibold w-full text-center p-1 hover:bg-[#8cd19d] hover:p-3"
+              onClick={() => navigate("/actividades/" + tirolesa.id)}
             >
               <div className="text-[#ffffdd] group text-shadow-lg/20">
                 <p className="inline-block relative mr-50 bg-[#6290C3] w-full rounded-2xl">{tirolesa.nombre}</p>
-                <p className={`inline-block m-5 ${tirolesa.inscriptos <= (tirolesa.cupos * 0.6) ? 'bg-[#d4f1db]' : 'bg-red-300'} rounded-xl p-2`}>
+                <p className={`inline-block m-5 ${tirolesa.inscriptos <= (tirolesa.cupos * 0.7) ? 'bg-[#d4f1db]' : 'bg-red-300'} rounded-xl p-2`}>
                   Cupos: {tirolesa.inscriptos}/{tirolesa.cupos}
                 </p>
                 <p className="inline-block bg-[#d4f1db] rounded-xl p-2">{getFormatedDate(tirolesa.desde)} - {getFormatedDate(tirolesa.hasta)}</p>
-                {tirolesa.inscriptos <= (tirolesa.cupos * 0.6) ? <p></p> : <p className="p-1 group-hover:bg-[#384252] rounded-2xl m-2">Últimos lugares</p>}
+                {tirolesa.inscriptos <= (tirolesa.cupos * 0.7) ? <p></p> : <p className="p-1 group-hover:bg-[#384252] rounded-2xl m-2">Últimos lugares</p>}
               </div>
             </div>
 
@@ -335,14 +347,15 @@ function Actividades() {
             <div
               key={palestra.id}
               className="font-mono relative bg-[#88366a] shadow-2xl mb-4 rounded-md font-semibold w-full text-center p-1 hover:bg-[#8cd19d] hover:p-3"
+              onClick={() => navigate("/actividades/" + palestra.id)}
             >
               <div className="text-[#ffffdd] group text-shadow-lg/20">
-                <p className="inline-block relative mr-50 bg-[##752559] w-full rounded-2xl">{palestra.nombre}</p>
-                <p className={`inline-block m-5 ${palestra.inscriptos <= (palestra.cupos * 0.6) ? 'bg-[#d4f1db]' : 'bg-red-300'} rounded-xl p-2`}>
+                <p className="inline-block relative mr-50 bg-[#752559] w-full rounded-2xl">{palestra.nombre}</p>
+                <p className={`inline-block m-5 ${palestra.inscriptos <= (palestra.cupos * 0.7) ? 'bg-[#d4f1db]' : 'bg-red-300'} rounded-xl p-2`}>
                   Cupos: {palestra.inscriptos}/{palestra.cupos}
                 </p>
                 <p className="inline-block bg-[#d4f1db] rounded-xl p-2">{getFormatedDate(palestra.desde)} - {getFormatedDate(palestra.hasta)}</p>
-                {palestra.inscriptos <= (palestra.cupos * 0.6) ? <p></p> : <p className="p-1 group-hover:bg-[#384252] rounded-2xl m-2">Últimos lugares</p>}
+                {palestra.inscriptos <= (palestra.cupos * 0.7) ? <p></p> : <p className="p-1 group-hover:bg-[#384252] rounded-2xl m-2">Últimos lugares</p>}
               </div>
             </div>
           ))}
@@ -355,6 +368,7 @@ function Actividades() {
             <div
               key={safari.id}
               className="font-mono relative bg-[#5B5750] shadow-2xl mb-4 rounded-md font-semibold w-full text-center p-1 hover:bg-[#8cd19d] hover:p-3"
+              onClick={() => navigate("/actividades/" + safari.id)}
             >
               <div className="text-[#ffffdd] group text-shadow-lg/20">
                 <p className="inline-block relative mr-50 bg-[#492C1D] w-full rounded-2xl">{safari.nombre}</p>
