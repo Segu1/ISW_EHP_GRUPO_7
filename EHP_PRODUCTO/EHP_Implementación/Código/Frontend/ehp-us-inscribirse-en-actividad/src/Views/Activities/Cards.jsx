@@ -20,8 +20,8 @@ const tipoActividad = [
         label: <span>Palestra</span>,
     },
     {
-        value: "Jardineria",
-        label: <span>Jardineria</span>,
+        value: "Jardinería",
+        label: <span>Jardinería</span>,
     },
 ];
 
@@ -44,8 +44,6 @@ function Cards() {
             getData.filterActivities(selectedCategory)
         }
     }, [dataLoaded, selectedCategory]);
-
-    console.log(selectedCategory)
     
     return (
         <>
@@ -62,22 +60,23 @@ function Cards() {
                     ) : getData.error ? (
                         <p>Error fetching data: {getData.errorData}</p>
                     ) : (
+                        //{"id":1,"nombre":"Tirolesa","cupos":10,"requiere_talla":false,"fecha_inicio":"2025-03-21T00:00:00.000Z","fecha_fin":"2025-03-22T00:00:00.000Z","inscriptos":0}
                         <S.Container>
                             {getData.filteredActivities?.map(
                                 ({
                                     id,
                                     cupos,
                                     nombre,
-                                    fechaDesde,
-                                    fechaHasta,
+                                    fecha_inicio,
+                                    fecha_fin,
                                     inscriptos,
                                 }) => (
                                     <Card
                                         key={id}
                                         cupos={cupos}
                                         nombre={nombre}
-                                        fechaDesde={fechaDesde}
-                                        fechaHasta={fechaHasta}
+                                        fecha_inicio={fecha_inicio}
+                                        fecha_fin={fecha_fin}
                                         inscriptos={inscriptos}
                                     />
                                 )

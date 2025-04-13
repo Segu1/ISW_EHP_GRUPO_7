@@ -16,7 +16,8 @@ export const useActivitiesStore = create((set) => ({
     execute: async() => {
         set({...initialState, loading: true});
         try {
-            const res = await axios.get("https://api-generator.retool.com/Jl0MGu/activities");
+            //const res = await axios.get("https://api-generator.retool.com/Jl0MGu/activities");
+            const res = await axios.get("http://localhost:5050/actividades");
             set({...initialState, success: true, data: res.data})
         } catch (err) {
             console.error("Error in data fetch: ", err);
