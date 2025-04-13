@@ -28,6 +28,17 @@ routerInscripciones.post('/', async (req, res) => {
     return res.status(400).json({ error: "Actividad no válida" });
   }
 
+  // Validar cupos disponibles
+
+  const cantidadInscriptos = await gestorInscripciones.contar_inscriptos(actividadId);
+  const cuposDisponibles = actividadExiste.cupos - cantidadInscriptos;
+  
+  console.log("Cupos disponibles y actividad ID:", cuposDisponibles, actividadId);
+
+  if (cuposDisponibles <= 0) {
+    return res.status(409).json({ error: "No hay más cupos disponibles para esta actividad" });
+  }
+
   for (const persona of personas) {
     try {
       const talla = persona.talla || null;
