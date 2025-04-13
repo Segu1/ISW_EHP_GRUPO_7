@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+const Main = styled.section`
+    min-height: 60vh;
+`
+
 const Wrapper = styled.section`
     max-width: 80em;
     margin: 0 auto;
@@ -8,18 +12,15 @@ const Wrapper = styled.section`
 `
 
 const Container = styled.div`
-    background-color: #6bab90;
-    border-radius: 30px;
-    //box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.27);
-    border-bottom: 3px solid #3b511187;
-    padding: 1em;
-    margin-top: 10px;
-    margin-bottom: 20px;
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
+    padding-left: 25px;
+    padding-right: 25px;
 `
 
 export const S = {
+    Main,
     Wrapper,
     Container
 }

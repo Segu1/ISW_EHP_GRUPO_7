@@ -28,6 +28,18 @@ export class GestorInscripciones{
                   })
         }
     
-
+    async contar_inscriptos(id_actividad) {
+        try {
+            const count = await Inscripcion.count({
+                where: {
+                    id_actividad: id_actividad
+                }
+            });
+            return count;
+        } catch (error) {
+            console.error("Error al contar inscriptos:", error);
+            throw new Error("Error al contar inscriptos");
+        }
+    }    
    
 }
