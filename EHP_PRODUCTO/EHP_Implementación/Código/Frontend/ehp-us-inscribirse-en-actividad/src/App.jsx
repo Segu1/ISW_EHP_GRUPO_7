@@ -1,19 +1,19 @@
-import { Route, Routes } from "react-router"
-import Home from "./Views/Home"
-import Actividades from "./Views/Actividades"
-import Cards from "./Views/Activities/Cards"
+import { Route, Routes } from "react-router";
+import Home from "./Views/Home";
+import Actividades from "./Views/Actividades";
+import Cards from "./Views/Activities/Cards";
+import Footer from "./Components/Footer";
 
 function App() {
-
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<Home/>}></Route>
-        <Route path ="/actividades" element={<Actividades></Actividades>}></Route>
-        <Route path="/prueba" element={<Cards/>}/>
-      </Routes>
-    </>
-  )
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/actividades" element={<Cards />} />
+            </Routes>
+            <Footer />
+        </>
+    );
 }
 
-export default App
+export default App;

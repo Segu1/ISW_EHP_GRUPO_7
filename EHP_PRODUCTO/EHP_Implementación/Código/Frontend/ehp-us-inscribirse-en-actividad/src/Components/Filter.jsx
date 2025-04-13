@@ -1,52 +1,26 @@
 import { Select } from "antd";
-import { Container, Wrapper } from "../assets/css/Filter.css";
+import { S } from "../assets/css/Filter.css";
 import { Button } from "antd";
 import { DatePicker } from "antd";
 import dayjs from "dayjs";
 import { ConfigProvider } from "antd";
 import locale from "antd/locale/es_ES";
-import { create } from "zustand";
 
 const disabledDate = (current) => {
-    return current && current < dayjs().startOf('day');
+    return current && current < dayjs().startOf("day");
 };
 
-const tipoActividad = [
-    {
-        value: "Tirolesa",
-        label: <span>Tirolesa</span>,
-    },
-    {
-        value: "Safari",
-        label: <span>Safari</span>,
-    },
-    {
-        value: "Palestra",
-        label: <span>Palestra</span>,
-    },
-    {
-        value: "Jardinería",
-        label: <span>Jardinería</span>,
-    },
-];
-
-const useStore = create((set) => (
-    {
-        count: 0,
-        inc: () => set((state) => ({count: state.count+1}))
-    }
-))
-
-function Filter() {
-    const counter = useStore((state) => state.count)
-    const incCounter = useStore((state) => state.inc)
+function Filter({ tipoActividad, selectedCategory, onChangeCategory }) {
     return (
         <>
-            <Wrapper>
-                <Container>
+            <S.Wrapper>
+                <S.Container>
                     <Select
+                        value={selectedCategory}
                         placeholder="Filtrar categoría"
                         options={tipoActividad}
+                        onChange={onChangeCategory}
+                        style={{minWidth: 130}}
                     />
                     <ConfigProvider locale={locale}>
                         <DatePicker
@@ -55,9 +29,8 @@ function Filter() {
                             format="DD-MM-YYYY"
                         />
                     </ConfigProvider>
-                    <Button onClick={incCounter}>{counter}</Button>
-                </Container>
-            </Wrapper>
+                </S.Container>
+            </S.Wrapper>
         </>
     );
 }

@@ -1,67 +1,91 @@
 import { useEffect } from "react";
-import { Container } from "../../assets/css/Cards.css";
+import { S } from "../../assets/css/Cards.css";
 import { useActivitiesStore } from "../../store/activities";
 import Card from "./Card";
-import { useRef } from "react";
+import Filter from "../../Components/Filter";
+import Navbar from "../../Components/Navbar";
+import { useState } from "react";
+
+const tipoActividad = [
+    {
+        value: "Tirolesa",
+        label: <span>Tirolesa</span>,
+    },
+    {
+        value: "Safari",
+        label: <span>Safari</span>,
+    },
+    {
+        value: "Palestra",
+        label: <span>Palestra</span>,
+    },
+    {
+        value: "Jardineria",
+        label: <span>Jardineria</span>,
+    },
+];
 
 function Cards() {
     const getData = useActivitiesStore();
-    const refOptionCategory = useRef()
+    const [dataLoaded, setDataLoaded] = useState(false)
+    const [selectedCategory, setSelectedCategory] = useState(tipoActividad[0].value);
 
     useEffect(() => {
-        const fetchAndFilter = async () => {
+        const fetch = async () => {
             await getData.execute();
-            const defaultCategory = refOptionCategory.current?.value;
-            if (defaultCategory) {
-                getData.filterActivities(defaultCategory)
-            }
+            setDataLoaded(true)
         };
 
-        fetchAndFilter();
+        fetch();
     }, []);
 
+    useEffect(() => {
+        if(dataLoaded && selectedCategory) {
+            getData.filterActivities(selectedCategory)
+        }
+    }, [dataLoaded, selectedCategory]);
+
+    console.log(selectedCategory)
+    
     return (
         <>
-            Actividades
-            <select
-                id="categories"
-                ref={refOptionCategory}
-                onChange={(event) =>
-                    getData.filterActivities(event.target.value)
-                }
-            >
-                <option value="Jardineria">Jardineria</option>
-                <option value="Tirolesa">Tirolesa</option>
-                <option value="Palestra">Palestra</option>
-                <option value="Safari">Safari</option>
-            </select>
-            {getData.loading ? (
-                <p>Cargando...</p>
-            ) : getData.error ? (
-                <p>Error fetching data: {getData.errorData}</p>
-            ) : (
-                <Container>
-                    {getData.filteredActivities?.map(
-                        ({
-                            id,
-                            cupos,
-                            nombre,
-                            fechaDesde,
-                            fechaHasta,
-                            inscriptos,
-                        }) => (
-                            <Card
-                                key={id}
-                                cupos={cupos}
-                                nombre={nombre}
-                                fechaDesde={fechaDesde}
-                                fechaHasta={fechaHasta}
-                                inscriptos={inscriptos}
-                            />
-                        )
+            <Navbar site="Actividades" />
+            <S.Main>
+                <Filter
+                    tipoActividad={tipoActividad}
+                    selectedCategory={selectedCategory}
+                    onChangeCategory={(value) => setSelectedCategory(value)}
+                />
+                <S.Wrapper>
+                    {getData.loading ? (
+                        <p>Cargando...</p>
+                    ) : getData.error ? (
+                        <p>Error fetching data: {getData.errorData}</p>
+                    ) : (
+                        <S.Container>
+                            {getData.filteredActivities?.map(
+                                ({
+                                    id,
+                                    cupos,
+                                    nombre,
+                                    fechaDesde,
+                                    fechaHasta,
+                                    inscriptos,
+                                }) => (
+                                    <Card
+                                        key={id}
+                                        cupos={cupos}
+                                        nombre={nombre}
+                                        fechaDesde={fechaDesde}
+                                        fechaHasta={fechaHasta}
+                                        inscriptos={inscriptos}
+                                    />
+                                )
+                            )}
+                        </S.Container>
                     )}
-                </Container>
-            )}
+                </S.Wrapper>
+            </S.Main>
         </>
     );
 }

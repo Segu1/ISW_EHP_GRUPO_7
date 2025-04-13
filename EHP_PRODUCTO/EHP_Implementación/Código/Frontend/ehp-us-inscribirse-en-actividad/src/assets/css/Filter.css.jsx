@@ -8,8 +8,8 @@ const Wrapper = styled.section`
 `
 
 const Container = styled.div`
-    background-color: #e1f0c4;
-    border-radius: 4px;
+    background-color: #6bab90;
+    border-radius: 30px;
     //box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.27);
     border-bottom: 3px solid #3b511187;
     padding: 1em;
@@ -19,7 +19,7 @@ const Container = styled.div`
     gap: 10px;
 `
 
-export {
+export const S = {
     Wrapper,
     Container
 }

@@ -1,4 +1,4 @@
-import { Box } from "../../assets/css/Card.css";
+import { S } from "../../assets/css/Card.css";
 
 export default function Card({
     cupos,
@@ -9,13 +9,13 @@ export default function Card({
 }) {
     return (
         <>
-            <Box>
+            <S.Box>
                 <p>{cupos}</p>
                 <p>{nombre}</p>
                 <p>{fechaDesde}</p>
                 <p>{fechaHasta}</p>
                 <p>{inscriptos}</p>
-            </Box>
+            </S.Box>
         </>
     );
 }
