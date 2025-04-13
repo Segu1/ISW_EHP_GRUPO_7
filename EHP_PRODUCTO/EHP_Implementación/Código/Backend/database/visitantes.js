@@ -1,5 +1,6 @@
 import { sequelize } from "./database.js";
 import { DataTypes } from "sequelize";
+import { Inscripcion } from "./inscripciones.js";
 
 
 export const Visitantes = sequelize.define('Visitantes', {
@@ -14,8 +15,8 @@ export const Visitantes = sequelize.define('Visitantes', {
 });
 
 // Establecer la relación un visitante a muchas incripciones
-//Visitantes.hasMany(Inscripcion, { foreignKey: 'id' });
-//Inscripcion.belongsTo(Visitantes, { foreignKey: 'id' });
+Visitantes.hasMany(Inscripcion, { foreignKey: 'id_visitante' });
+Inscripcion.belongsTo(Visitantes, { foreignKey: 'id_visitante' });
 
 
 
@@ -48,3 +49,6 @@ export async function inicializarDatosVisitante() {
         ]
     )
 };
+
+
+// inicializarDatosVisitante()
