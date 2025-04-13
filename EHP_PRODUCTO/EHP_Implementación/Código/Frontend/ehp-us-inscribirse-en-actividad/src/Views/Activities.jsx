@@ -1,284 +1,42 @@
 import Navbar from "../Components/Navbar";
 import Filter from "../Components/Filter";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function Actividades() {
   const navigate = useNavigate();
-  const datos = [
-    {
-        id: 1,
-        nombre: "Jardinería",
-        cupos: 10,
-        desde: "2025-05-11T10:48",
-        hasta: "2025-05-11T11:30",
-        inscriptos: 6
-    },
-    {
-        id: 2,
-        nombre: "Jardinería",
-        cupos: 10,
-        desde: "2025-05-11T12:00",
-        hasta: "2025-05-11T12:30",
-        inscriptos: 4
-    },
-    {
-        id: 3,
-        nombre: "Jardinería",
-        cupos: 10,
-        desde: "2025-05-11T13:00",
-        hasta: "2025-05-11T13:45",
-        inscriptos: 7
-    },
-    {
-        id: 4,
-        nombre: "Jardinería",
-        cupos: 10,
-        desde: "2025-05-11T14:00",
-        hasta: "2025-05-11T14:30",
-        inscriptos: 3
-    },
-    {
-        id: 5,
-        nombre: "Jardinería",
-        cupos: 10,
-        desde: "2025-05-11T15:00",
-        hasta: "2025-05-11T15:30",
-        inscriptos: 9
-    },
-    {
-      id: 6,
-      nombre: "Jardineria",
-      cupos: 10,
-      desde: "2025-05-11T15:00",
-      hasta: "2025-05-11T15:30",
-      inscriptos: 9
-  },
-  {
-    id: 7,
-    nombre: "Tirolesa",
-    cupos: 10,
-    desde: "2025-05-11T10:48",
-    hasta: "2025-05-11T11:30",
-    inscriptos: 6
-},
-{
-    id: 8,
-    nombre: "Tirolesa",
-    cupos: 10,
-    desde: "2025-05-11T12:00",
-    hasta: "2025-05-11T12:30",
-    inscriptos: 4
-},
-{
-    id: 9,
-    nombre: "Tirolesa",
-    cupos: 10,
-    desde: "2025-05-11T13:00",
-    hasta: "2025-05-11T13:45",
-    inscriptos: 7
-},
-{
-    id: 10,
-    nombre: "Tirolesa",
-    cupos: 10,
-    desde: "2025-05-11T14:00",
-    hasta: "2025-05-11T14:30",
-    inscriptos: 3
-},
-{
-    id: 11,
-    nombre: "Tirolesa",
-    cupos: 10,
-    desde: "2025-05-11T15:00",
-    hasta: "2025-05-11T15:30",
-    inscriptos: 10
-},
-{
-    id: 12,
-    nombre: "Tirolesa",
-    cupos: 10,
-    desde: "2025-05-11T15:00",
-    hasta: "2025-05-11T15:30",
-    inscriptos: 10
-},
-  {
-  id: 12,
-  nombre: "Tirolesa",
-  cupos: 10,
-  desde: "2025-05-11T15:00",
-  hasta: "2025-05-11T15:30",
-  inscriptos: 10
-},
-{
-  id: 13,
-  nombre: "Safari",
-  cupos: 8,
-  desde: "2025-05-12T10:00",
-  hasta: "2025-05-12T11:00",
-  inscriptos: 6
-},
-{
-  id: 14,
-  nombre: "Jardinería",
-  cupos: 12,
-  desde: "2025-05-13T09:30",
-  hasta: "2025-05-13T10:30",
-  inscriptos: 9
-},
-{
-  id: 15,
-  nombre: "Palestra",
-  cupos: 15,
-  desde: "2025-05-14T14:00",
-  hasta: "2025-05-14T15:00",
-  inscriptos: 13
-},
-{
-  id: 16,
-  nombre: "Tirolesa",
-  cupos: 10,
-  desde: "2025-05-15T15:00",
-  hasta: "2025-05-15T15:30",
-  inscriptos: 8
-},
-{
-  id: 17,
-  nombre: "Safari",
-  cupos: 8,
-  desde: "2025-05-16T10:00",
-  hasta: "2025-05-16T11:00",
-  inscriptos: 5
-},
-{
-  id: 18,
-  nombre: "Jardinería",
-  cupos: 12,
-  desde: "2025-05-17T09:30",
-  hasta: "2025-05-17T10:30",
-  inscriptos: 12
-},
-{
-  id: 19,
-  nombre: "Palestra",
-  cupos: 15,
-  desde: "2025-05-18T14:00",
-  hasta: "2025-05-18T15:00",
-  inscriptos: 10
-},
-{
-  id: 20,
-  nombre: "Tirolesa",
-  cupos: 10,
-  desde: "2025-05-19T15:00",
-  hasta: "2025-05-19T15:30",
-  inscriptos: 9
-},
-{
-  id: 21,
-  nombre: "Safari",
-  cupos: 8,
-  desde: "2025-05-20T10:00",
-  hasta: "2025-05-20T11:00",
-  inscriptos: 8
-},
-{
-  id: 22,
-  nombre: "Jardinería",
-  cupos: 12,
-  desde: "2025-05-21T09:30",
-  hasta: "2025-05-21T10:30",
-  inscriptos: 11
-},
-{
-  id: 23,
-  nombre: "Palestra",
-  cupos: 15,
-  desde: "2025-05-22T14:00",
-  hasta: "2025-05-22T15:00",
-  inscriptos: 14
-},
-{
-  id: 24,
-  nombre: "Tirolesa",
-  cupos: 10,
-  desde: "2025-05-23T15:00",
-  hasta: "2025-05-23T15:30",
-  inscriptos: 7
-},
-{
-  id: 25,
-  nombre: "Safari",
-  cupos: 8,
-  desde: "2025-05-24T10:00",
-  hasta: "2025-05-24T11:00",
-  inscriptos: 8
-},
-{
-  id: 26,
-  nombre: "Jardinería",
-  cupos: 12,
-  desde: "2025-05-25T09:30",
-  hasta: "2025-05-25T10:30",
-  inscriptos: 10
-},
-{
-  id: 27,
-  nombre: "Palestra",
-  cupos: 15,
-  desde: "2025-05-26T14:00",
-  hasta: "2025-05-26T15:00",
-  inscriptos: 12
-},
-{
-  id: 28,
-  nombre: "Tirolesa",
-  cupos: 10,
-  desde: "2025-05-27T15:00",
-  hasta: "2025-05-27T15:30",
-  inscriptos: 10
-},
-{
-  id: 29,
-  nombre: "Safari",
-  cupos: 8,
-  desde: "2025-05-28T10:00",
-  hasta: "2025-05-28T11:00",
-  inscriptos: 7
-},
-{
-  id: 30,
-  nombre: "Jardinería",
-  cupos: 12,
-  desde: "2025-05-29T09:30",
-  hasta: "2025-05-29T10:30",
-  inscriptos: 6
-},
-{
-  id: 31,
-  nombre: "Palestra",
-  cupos: 15,
-  desde: "2025-05-30T14:00",
-  hasta: "2025-05-30T15:00",
-  inscriptos: 15
-}
-];
+  const [datos, setDatos] = useState();
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get("http://localhost:5050/actividades");
+        setDatos(res.data); // <-- res.data, no .data.data
+        console.log(res.data);
+      } catch (e) {
+        console.log("Error al traer actividades:", e);
+      }
+    };
+  
+    fetchData();
+  }, []); // <-- no te olvides de pasar [] para que solo se ejecute una vez
 
   const transformData = (array, kind) => {
-    const realTime = new Date("2025-05-11T11:00");
-    const filteredArray = array.filter((activity) => activity.nombre === kind);
-    const filterCupos = filteredArray.filter((activity) => activity.cupos > activity.inscriptos);
-    const filterDate = filterCupos.filter((activity) => ((new Date(activity.desde).getTime() > realTime.getTime())));
-    
-
-    filterDate.forEach((activity) => {
-      activity.desde = new Date(activity.desde);
-      activity.hasta = new Date(activity.hasta);
-    });
-
-    filterDate.sort((a, b) => a.desde - b.desde);
-
-    return filterDate;
+    const realTime = new Date("2025-03-11T00:00:00"); // fecha base
+  
+    const filteredArray = array
+      .filter((activity) => activity.nombre === kind)
+      .map((activity) => ({
+        ...activity,
+        desde: new Date(activity.fecha_inicio),  // transformamos
+        hasta: new Date(activity.fecha_fin),
+      }))
+      .filter((activity) => activity.desde > realTime); // comparamos
+  
+    filteredArray.sort((a, b) => a.desde - b.desde);
+  
+    return filteredArray;
   };
 
 
@@ -301,11 +59,11 @@ function Actividades() {
         <Filter recibeData={recibeDataFromFilters} />
         {/* Jardinería */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto px-4 sm:h-1/8">
-          {transformData(datos, "Jardinería").map((jardineria) => (
+          {datos && transformData(datos, "Jardinería").map((jardineria) => (
             <div
               key={jardineria.id}
               className="font-mono relative bg-[#384252] shadow-2xl mb-4 rounded-md font-semibold w-full text-center p-1 hover:bg-[#8cd19d] hover:p-3"
-              onClick={() => navigate("/actividades/" + jardineria.id)}
+              onClick={() => {jardineria.cupos === jardineria.inscriptos ? alert("No hay cupos disponibles") : navigate("/actividades/" + jardineria.id)}}
             >
               <div className="text-[#ffffdd] group text-shadow-lg/20">
                 <p className="inline-block relative mr-50 bg-[#c0efd2] w-full rounded-2xl">{jardineria.nombre}</p>
@@ -321,7 +79,7 @@ function Actividades() {
     
         {/* Tirolesa */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto px-4 ">
-          {transformData(datos, "Tirolesa").map((tirolesa) => (
+          {datos && transformData(datos, "Tirolesa").map((tirolesa) => (
             <div
               key={tirolesa.id}
               className="font-mono relative bg-[#1A1B41] shadow-2xl mb-4 rounded-md font-semibold w-full text-center p-1 hover:bg-[#8cd19d] hover:p-3"
@@ -343,7 +101,7 @@ function Actividades() {
 
               {/* Palestra */}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto px-4 ">
-          {transformData(datos, "Palestra").map((palestra) => (
+          {datos && transformData(datos, "Palestra").map((palestra) => (
             <div
               key={palestra.id}
               className="font-mono relative bg-[#88366a] shadow-2xl mb-4 rounded-md font-semibold w-full text-center p-1 hover:bg-[#8cd19d] hover:p-3"
@@ -364,7 +122,7 @@ function Actividades() {
 
           {/* Safari */}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto px-4 ">
-          {transformData(datos, "Safari").map((safari) => (
+          {datos && transformData(datos, "Safari").map((safari) => (
             <div
               key={safari.id}
               className="font-mono relative bg-[#5B5750] shadow-2xl mb-4 rounded-md font-semibold w-full text-center p-1 hover:bg-[#8cd19d] hover:p-3"

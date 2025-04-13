@@ -13,13 +13,9 @@ function People(props) {
     reset();
   }, [props.peopleNumber, reset]);
 
-  const onSubmit = (data) => {
-    const id = props.id;
-    console.log(data);
-    const addIdToData = { id, ...data };
-    delete addIdToData.terminos;
-    console.log(addIdToData);
-  };
+  const onSubmit = () => {
+    console.log("a")
+  }
 
   return (
     <div className="flex flex-col w-full items-center justify-center p-4">
