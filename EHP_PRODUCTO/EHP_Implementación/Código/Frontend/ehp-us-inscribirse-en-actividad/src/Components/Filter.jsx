@@ -1,58 +1,34 @@
-import { useState } from "react";
+import { S } from "../assets/css/Filter.css";
 import { Select, DatePicker, Button, ConfigProvider } from "antd";
-import { Container, Wrapper } from "../assets/css/Filter.css";
 import dayjs from "dayjs";
 import locale from "antd/locale/es_ES";
 
 const disabledDate = (current) => {
-    return current && current < dayjs().startOf('day');
+    return current && current < dayjs().startOf("day");
 };
 
-const tipoActividad = [
-    { value: "Tirolesa", label: <span>Tirolesa</span> },
-    { value: "Safari", label: <span>Safari</span> },
-    { value: "Palestra", label: <span>Palestra</span> },
-    { value: "Jardinería", label: <span>Jardinería</span> },
-];
-
-function Filter({props}) {
-
-    const [categoria, setCategoria] = useState(null);
-    const [fecha, setFecha] = useState(dayjs());
-
-    const handleCategoriaChange = (value) => {
-        setCategoria(value);
-    };
-
-    const handleFechaChange = (date) => {
-        setFecha(date);
-    };
-
-    const handleFiltrar = () => {
-        props.recibeData(fecha, categoria)
-    };
-
+function Filter({ tipoActividad, selectedCategory, onChangeCategory }) {
     return (
-        <Wrapper>
-            <Container>
-                <Select
-                    placeholder="Filtrar categoría"
-                    options={tipoActividad}
-                    onChange={handleCategoriaChange}
-                    value={categoria}
-                    style={{ width: 200 }}
-                />
-                <ConfigProvider locale={locale}>
-                    <DatePicker
-                        disabledDate={disabledDate}
-                        defaultValue={fecha}
-                        onChange={handleFechaChange}
-                        format="DD-MM-YYYY"
+        <>
+            <S.Wrapper>
+                <S.Container>
+                    <Select
+                        value={selectedCategory}
+                        placeholder="Filtrar categoría"
+                        options={tipoActividad}
+                        onChange={onChangeCategory}
+                        style={{minWidth: 130}}
                     />
-                </ConfigProvider>
-                <Button onClick={handleFiltrar}>Filtrar</Button>
-            </Container>
-        </Wrapper>
+                    <ConfigProvider locale={locale}>
+                        <DatePicker
+                            disabledDate={disabledDate}
+                            defaultValue={dayjs()}
+                            format="DD-MM-YYYY"
+                        />
+                    </ConfigProvider>
+                </S.Container>
+            </S.Wrapper>
+        </>
     );
 }
 

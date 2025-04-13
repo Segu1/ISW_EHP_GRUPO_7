@@ -1,6 +1,6 @@
 import { Controller, useForm } from "react-hook-form";
 import { InputNumber, Divider } from "antd";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import { useParams } from "react-router";
 import People from "./People";
@@ -8,7 +8,7 @@ import People from "./People";
 function Inscription() {
   const {
     control,
-    register,
+    //register,
     handleSubmit,
     formState: { errors },
     watch,
