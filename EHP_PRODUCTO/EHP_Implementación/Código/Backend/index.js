@@ -22,7 +22,6 @@ export const gestorVisitantes = new GestorVisitantes();
 export const gestorInscripciones = new GestorInscripciones();
 
 
-
 app.get('/', (req, res) => {
   res.send('¡Testing!');
 });

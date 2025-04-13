@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Alert } from 'antd';
 
 function People(props) {
   const {
@@ -9,13 +11,43 @@ function People(props) {
     reset
   } = useForm();
 
+  const [responseStatus, setResponseStatus] = useState(null);
+
   useEffect(() => {
     reset();
   }, [props.peopleNumber, reset]);
 
-  const onSubmit = () => {
-    console.log("a")
-  }
+  const onSubmit = async (data) =>  {
+    console.log(data);
+    console.log(props.id);
+    try {
+
+        const payload = {
+          id: props.id,          // o simplemente: id: 1
+          personas: data.personas
+        };
+        
+        console.log(payload);
+        const response = await axios.post("http://localhost:5050/inscripciones", payload);
+        reset();
+        setResponseStatus(response.status);
+            } catch (error) {
+        if (error.response) {
+          console.log("Código de error:", error.response.status);
+          console.log("Mensaje del servidor:", error.response.data);
+          
+          // ejemplo de manejo por código
+          if (error.response.status === 409) {
+            alert("No hay cupos disponibles para esta actividad");
+          } 
+        } else if (error.request) {
+          console.log("No hubo respuesta del servidor");
+          alert("El servidor no respondió.");
+        } else {
+          console.log("Error en la configuración:", error.message);
+        }
+      }
+  };
 
   return (
     <div className="flex flex-col w-full items-center justify-center p-4">
@@ -148,12 +180,14 @@ function People(props) {
           <button
             type="submit" 
             disabled={!isValid}
-            className={`px-4 py-2 rounded text-white font-bold transition-all duration-200 ${
+            className={`px-4 py-2 rounded text-white font-bold mb-3 transition-all duration-200 ${
                 isValid ? "bg-indigo-600 hover:bg-indigo-700" : "bg-gray-400 cursor-not-allowed"
               }`}
                       >
             Enviar
           </button>
+
+          {responseStatus == 201 ? <Alert message="Inscripción exitosa" type="success" showIcon /> : ""}
         </div>
       </form>
     </div>
