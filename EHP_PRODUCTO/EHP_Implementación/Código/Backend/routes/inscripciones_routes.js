@@ -56,7 +56,6 @@ routerInscripciones.post('/', async (req, res) => {
 
       // Validar si esta inscripto 
       const yaInscripto = await gestorInscripciones.buscar_inscripcionSinPk(visitante.id, actividadId)
-     
 
       if (!yaInscripto) {
         // Crear inscripcin
@@ -74,6 +73,10 @@ routerInscripciones.post('/', async (req, res) => {
       errores.push(`Error con el visitante DNI ${persona.dni}`);
     }
   }
+
+  // Actualizar la cantidad de inscriptos en la actividad
+  const nuevosInscriptos = await gestorInscripciones.contar_inscriptos(actividadId);
+  await gestorActividades.actualizar_inscriptos(actividadId, nuevosInscriptos);
 
   if (errores.length > 0) {
     return res.status(207).json({ mensaje: "Algunos visitantes no se pudieron procesar", errores });
