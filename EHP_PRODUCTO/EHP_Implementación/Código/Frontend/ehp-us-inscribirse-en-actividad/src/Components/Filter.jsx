@@ -1,9 +1,6 @@
-import { Select } from "antd";
 import { S } from "../assets/css/Filter.css";
-import { Button } from "antd";
-import { DatePicker } from "antd";
+import { Select, DatePicker, Button, ConfigProvider } from "antd";
 import dayjs from "dayjs";
-import { ConfigProvider } from "antd";
 import locale from "antd/locale/es_ES";
 
 const disabledDate = (current) => {
@@ -36,3 +33,4 @@ function Filter({ tipoActividad, selectedCategory, onChangeCategory }) {
 }
 
 export default Filter;
+
