@@ -15,7 +15,7 @@ function App() {
                 <Route path="/actividadesv2" element={<Cards />} />
                 <Route path = "/actividades/:id" element={<Inscription></Inscription>}></Route>
             </Routes>
-            <Footer />
+           {/*<Footer />*/}
         </>
     );
 }

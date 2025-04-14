@@ -5,6 +5,8 @@ import Card from "./Card";
 import Filter from "../../Components/Filter";
 import Navbar from "../../Components/Navbar";
 import { useState } from "react";
+import { I } from "../../assets/img";
+import { AnimatePresence } from "motion/react";
 
 const tipoActividad = [
     {
@@ -27,28 +29,55 @@ const tipoActividad = [
 
 function Cards() {
     const getData = useActivitiesStore();
-    const [dataLoaded, setDataLoaded] = useState(false)
-    const [selectedCategory, setSelectedCategory] = useState(tipoActividad[0].value);
+    const [dataLoaded, setDataLoaded] = useState(false);
+    const [selectedCategory, setSelectedCategory] = useState(
+        tipoActividad[0].value
+    );
+
+    const imageByCategory = (category) => {
+        switch (category) {
+            case "Tirolesa":
+                return I.image_tirolesa;
+            case "Safari":
+                return I.image_safari;
+            case "Palestra":
+                return I.image_palestra;
+            case "Jardinería":
+                return I.image_jardineria;
+        }
+    };
 
     useEffect(() => {
         const fetch = async () => {
             await getData.execute();
-            setDataLoaded(true)
+            setDataLoaded(true);
         };
 
         fetch();
     }, []);
 
     useEffect(() => {
-        if(dataLoaded && selectedCategory) {
-            getData.filterActivities(selectedCategory)
+        if (dataLoaded && selectedCategory) {
+            getData.filterActivities(selectedCategory);
         }
     }, [dataLoaded, selectedCategory]);
-    
+
     return (
         <>
             <Navbar site="Actividades" />
             <S.Main>
+                <S.CoverPhotoMain>
+                    <AnimatePresence>
+                        <S.CoverPhotoAbs
+                            key={selectedCategory}
+                            imageURL={imageByCategory(selectedCategory)}
+                            initial={{ opacity: 0, backgroundSize: "120%" }}
+                            animate={{ opacity: 1, backgroundSize: "110%" }}
+                            exit={{ opacity: 0, backgroundSize: "100%"  }}
+                            transition={{ duration: 0.6, ease: "easeOut" }}
+                        ></S.CoverPhotoAbs>
+                    </AnimatePresence>
+                </S.CoverPhotoMain>
                 <Filter
                     tipoActividad={tipoActividad}
                     selectedCategory={selectedCategory}
