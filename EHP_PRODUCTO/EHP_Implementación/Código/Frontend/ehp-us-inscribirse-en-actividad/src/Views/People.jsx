@@ -30,16 +30,15 @@ function People(props) {
         console.log(payload);
         const response = await axios.post("http://localhost:5050/inscripciones", payload);
         reset();
+        console.log(response.status);
         setResponseStatus(response.status);
             } catch (error) {
         if (error.response) {
           console.log("Código de error:", error.response.status);
           console.log("Mensaje del servidor:", error.response.data);
-          
+          setResponseStatus(error.response.status);
           // ejemplo de manejo por código
-          if (error.response.status === 409) {
-            alert("No hay cupos disponibles para esta actividad");
-          } 
+    
         } else if (error.request) {
           console.log("No hubo respuesta del servidor");
           alert("El servidor no respondió.");
@@ -188,6 +187,7 @@ function People(props) {
           </button>
 
           {responseStatus == 201 ? <Alert message="Inscripción exitosa" type="success" showIcon /> : ""}
+          {responseStatus == 409 ? <Alert message="Error" description="Los cupos de esa actividad estan llenos." type="error" showIcon/> : ""}
         </div>
       </form>
     </div>
