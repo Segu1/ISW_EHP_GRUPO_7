@@ -50,6 +50,20 @@ export async function inicializarDatosInscripciones() {
     }; 
 
 
-
-
 // inicializarDatosInscripciones()
+
+
+/*export async function eliminarDatosInscripciones() {
+    try {
+        await sequelize.sync(); // Asegura que la conexión esté lista
+        await Inscripcion.destroy({
+            where: {}, // Sin condiciones → elimina todos
+            truncate: true // También reinicia IDs autoincrementales
+        });
+        console.log("Registros de Inscripcion eliminados exitosamente.");
+    } catch (error) {
+        console.error("Error al eliminar los registros de Inscripcion:", error);
+    }
+}
+
+eliminarDatosInscripciones()*/

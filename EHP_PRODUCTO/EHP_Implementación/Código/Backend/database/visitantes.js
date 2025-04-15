@@ -73,8 +73,58 @@ export async function inicializarDatosVisitante() {
       {id: 47, nombre: "Martín", dni: 49573620, edad: 32, talla_vestimenta: "M"},
       {id: 48, nombre: "Beatriz", dni: 56329546, edad: 29, talla_vestimenta: "L"},
       {id: 49, nombre: "Sofía", dni: 54173211, edad: 28, talla_vestimenta: "S"},
-      {id: 50, nombre: "Antonio", dni: 50729451, edad: 26, talla_vestimenta: "M"}
-  ])
+      {id: 50, nombre: "Antonio", dni: 50729451, edad: 26, talla_vestimenta: "M"},
+      { id: 51, nombre: "Javier", dni: 52345678, edad: 18, talla_vestimenta: "L" },
+      { id: 52, nombre: "Daniela", dni: 35678901, edad: 42, talla_vestimenta: "S" },
+      { id: 53, nombre: "Martín", dni: 48901234, edad: 25, talla_vestimenta: "M" },
+      { id: 54, nombre: "Carolina", dni: 31234567, edad: 48, talla_vestimenta: "XS" },
+      { id: 55, nombre: "Esteban", dni: 55678901, edad: 15, talla_vestimenta: "XL" },
+      { id: 56, nombre: "Florencia", dni: 42345678, edad: 29, talla_vestimenta: "S" },
+      { id: 57, nombre: "Ignacio", dni: 38901234, edad: 37, talla_vestimenta: "M" },
+      { id: 58, nombre: "Valentina", dni: 51234567, edad: 20, talla_vestimenta: "L" },
+      { id: 59, nombre: "Alejandro", dni: 36789012, edad: 40, talla_vestimenta: "S" },
+      { id: 60, nombre: "Camila", dni: 45678901, edad: 27, talla_vestimenta: "M" },
+      { id: 61, nombre: "Federico", dni: 32345678, edad: 46, talla_vestimenta: "L" },
+      { id: 62, nombre: "Agustina", dni: 58901234, edad: 12, talla_vestimenta: "XS" },
+      { id: 63, nombre: "Nicolás", dni: 41234567, edad: 31, talla_vestimenta: "M" },
+      { id: 64, nombre: "Brenda", dni: 37890123, edad: 39, talla_vestimenta: "S" },
+      { id: 65, nombre: "Joaquín", dni: 54567890, edad: 16, talla_vestimenta: "XL" },
+      { id: 66, nombre: "Luciana", dni: 43456789, edad: 28, talla_vestimenta: "S" },
+      { id: 67, nombre: "Sebastián", dni: 39012345, edad: 36, talla_vestimenta: "M" },
+      { id: 68, nombre: "Micaela", dni: 50123456, edad: 21, talla_vestimenta: "L" },
+      { id: 69, nombre: "Thiago", dni: 35678901, edad: 42, talla_vestimenta: "S" },
+      { id: 70, nombre: "Antonella", dni: 47890123, edad: 26, talla_vestimenta: "M" },
+      { id: 71, nombre: "Ramiro", dni: 33456789, edad: 44, talla_vestimenta: "L" },
+      { id: 72, nombre: "Sofía", dni: 59012345, edad: 11, talla_vestimenta: "XXL" },
+      { id: 73, nombre: "Mateo", dni: 40123456, edad: 32, talla_vestimenta: "S" },
+      { id: 74, nombre: "Julieta", dni: 36789012, edad: 40, talla_vestimenta: "M" },
+      { id: 75, nombre: "Benjamín", dni: 53456789, edad: 17, talla_vestimenta: "XL" },
+      { id: 76, nombre: "Martina", dni: 44567890, edad: 27, talla_vestimenta: "S" },
+      { id: 77, nombre: "Lucas", dni: 38901234, edad: 37, talla_vestimenta: "M" },
+      { id: 78, nombre: "Emilia", dni: 52345678, edad: 19, talla_vestimenta: "L" },
+      { id: 79, nombre: "Agustín", dni: 34567890, edad: 43, talla_vestimenta: "S" },
+      { id: 80, nombre: "Catalina", dni: 49012345, edad: 24, talla_vestimenta: "M" },
+      { id: 81, nombre: "Manuel", dni: 31234567, edad: 48, talla_vestimenta: "L" },
+      { id: 82, nombre: "Olivia", dni: 60000000, edad: 10, talla_vestimenta: "XS" },
+      { id: 83, nombre: "Santino", dni: 42345678, edad: 29, talla_vestimenta: "M" },
+      { id: 84, nombre: "Victoria", dni: 37890123, edad: 39, talla_vestimenta: "S" },
+      { id: 85, nombre: "Lautaro", dni: 55678901, edad: 15, talla_vestimenta: "XL" },
+      { id: 86, nombre: "Guadalupe", dni: 43456789, edad: 28, talla_vestimenta: "S" },
+      { id: 87, nombre: "Felipe", dni: 39012345, edad: 36, talla_vestimenta: "M" },
+      { id: 88, nombre: "Abril", dni: 51234567, edad: 20, talla_vestimenta: "L" },
+      { id: 89, nombre: "Joaquín", dni: 36789012, edad: 40, talla_vestimenta: "S" },
+      { id: 90, nombre: "Alma", dni: 46789012, edad: 26, talla_vestimenta: "M" },
+      { id: 91, nombre: "Bautista", dni: 32345678, edad: 46, talla_vestimenta: "L" },
+      { id: 92, nombre: "Emma", dni: 58901234, edad: 12, talla_vestimenta: "XXL" },
+      { id: 93, nombre: "Vicente", dni: 41234567, edad: 31, talla_vestimenta: "S" },
+      { id: 94, nombre: "Josefina", dni: 38901234, edad: 37, talla_vestimenta: "M" },
+      { id: 95, nombre: "Simón", dni: 54567890, edad: 16, talla_vestimenta: "XL" },
+      { id: 96, nombre: "Elena", dni: 44567890, edad: 27, talla_vestimenta: "S" },
+      { id: 97, nombre: "Tomás", dni: 39012345, edad: 36, talla_vestimenta: "M" },
+      { id: 98, nombre: "Francesca", dni: 50123456, edad: 21, talla_vestimenta: "L" },
+      { id: 99, nombre: "Benicio", dni: 35678901, edad: 42, talla_vestimenta: "S" },
+      { id: 100, nombre: "Guadalupe", dni: 47890123, edad: 25, talla_vestimenta: "M" }
+    ])
 };
 
 
@@ -83,7 +133,7 @@ export async function inicializarDatosVisitante() {
 // inicializarDatosVisitante()
 
 
-/*export async function inicializarTablaVisitanteVacia() {
+/* export async function inicializarTablaVisitanteVacia() {
     try {
       await sequelize.sync();
       await Visitantes.truncate();
@@ -92,4 +142,4 @@ export async function inicializarDatosVisitante() {
       console.error('Error al vaciar la tabla Visitantes:', error);
     }
   }
-inicializarTablaVisitanteVacia()  */ 
+inicializarTablaVisitanteVacia() */
