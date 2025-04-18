@@ -4,7 +4,7 @@ const Box = styled.div`
     background-color: #e8e8e8;
     border-bottom: 4px solid #b7b7b7;
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px 40px;
     transition: scale 0.1s linear;
     cursor: pointer;
     box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.15);
@@ -14,7 +14,7 @@ const Box = styled.div`
     }
 `
 
-const TitleActivy = styled.div`
+const TitleActivity = styled.div`
     width: 100%;
     display: flex;
     justify-items: center;
@@ -32,7 +32,16 @@ const TitleActivy = styled.div`
     }
 `
 
+const InfoActivity = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+`
+
 export const S = {
     Box,
-    TitleActivy
+    TitleActivity,
+    InfoActivity
 }

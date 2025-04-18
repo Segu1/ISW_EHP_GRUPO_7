@@ -8,6 +8,8 @@ import { useState } from "react";
 import { I } from "../../assets/img";
 import { AnimatePresence } from "motion/react";
 import dayjs from "dayjs";
+import { Modal } from "antd";
+import { useNavigate } from "react-router";
 
 const tipoActividad = [
     {
@@ -29,12 +31,15 @@ const tipoActividad = [
 ];
 
 function Cards() {
+    const navigate = useNavigate();
     const getData = useActivitiesStore();
     const [dataLoaded, setDataLoaded] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(
         tipoActividad[0].value
     );
     const [selectedDate, setSelectedDate] = useState(dayjs());
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedActivity, setSelectedActivity] = useState({});
 
     const imageByCategory = (category) => {
         switch (category) {
@@ -63,9 +68,6 @@ function Cards() {
             getData.filterActivities(selectedCategory, selectedDate);
         }
     }, [dataLoaded, selectedCategory, selectedDate]);
-
-    console.log(selectedDate);
-    
 
     return (
         <>
@@ -114,9 +116,40 @@ function Cards() {
                                         fecha_inicio={fecha_inicio}
                                         fecha_fin={fecha_fin}
                                         inscriptos={inscriptos}
+                                        onClick={() => {
+                                            setSelectedActivity({
+                                                id,
+                                                cupos,
+                                                nombre,
+                                                fecha_inicio,
+                                                fecha_fin,
+                                                inscriptos,
+                                            });
+                                            setIsModalOpen(true);
+                                        }}
                                     />
                                 )
                             )}
+                            <Modal
+                                title={selectedActivity?.nombre ?? "Actividad"}
+                                centered
+                                open={isModalOpen}
+                                onCancel={() => {
+                                    setIsModalOpen(false);
+                                    setSelectedActivity(null);
+                                }}
+                                cancelText={"Cerrar"}
+                                okText={"Inscribirse"}
+                                onOk={() => {
+                                    navigate(`/actividades/${selectedActivity.id}`)
+                                }}
+                            >
+                                {selectedActivity && (
+                                    <div>
+                                        <p>{selectedActivity.cupos}</p>
+                                    </div>
+                                )}
+                            </Modal>
                         </S.Container>
                     )}
                 </S.Wrapper>
