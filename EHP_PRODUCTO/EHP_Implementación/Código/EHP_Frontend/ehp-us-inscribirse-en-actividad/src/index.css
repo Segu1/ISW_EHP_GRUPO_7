@@ -1,4 +1,13 @@
+@font-face {
+    font-family: Oswald;
+    src: url("./assets/fonts/Oswald.ttf");
+}
+
 @import "tailwindcss";
+
+@theme {
+    --font-oswald: Oswald, "sans-serif"
+}
 
 body {
     background-image: url("./assets/img/bg2.jpg");
