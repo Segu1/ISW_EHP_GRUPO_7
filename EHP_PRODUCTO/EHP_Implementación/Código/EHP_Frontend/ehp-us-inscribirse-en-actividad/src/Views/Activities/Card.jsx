@@ -22,6 +22,9 @@ export default function Card({
     return (
         <>
             <S.Box>
+                <S.TitleActivy>
+                    <h1>{nombre}</h1>
+                </S.TitleActivy>
                 <p>{nombre}</p>
                 <p>{cupos}</p>
                 <p>{fecha_inicio}</p>

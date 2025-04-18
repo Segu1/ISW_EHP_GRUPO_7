@@ -7,6 +7,7 @@ import Navbar from "../../Components/Navbar";
 import { useState } from "react";
 import { I } from "../../assets/img";
 import { AnimatePresence } from "motion/react";
+import dayjs from "dayjs";
 
 const tipoActividad = [
     {
@@ -33,6 +34,7 @@ function Cards() {
     const [selectedCategory, setSelectedCategory] = useState(
         tipoActividad[0].value
     );
+    const [selectedDate, setSelectedDate] = useState(dayjs());
 
     const imageByCategory = (category) => {
         switch (category) {
@@ -57,10 +59,13 @@ function Cards() {
     }, []);
 
     useEffect(() => {
-        if (dataLoaded && selectedCategory) {
-            getData.filterActivities(selectedCategory);
+        if (dataLoaded && (selectedCategory || selectedDate)) {
+            getData.filterActivities(selectedCategory, selectedDate);
         }
-    }, [dataLoaded, selectedCategory]);
+    }, [dataLoaded, selectedCategory, selectedDate]);
+
+    console.log(selectedDate);
+    
 
     return (
         <>
@@ -73,7 +78,7 @@ function Cards() {
                             imageURL={imageByCategory(selectedCategory)}
                             initial={{ opacity: 0, backgroundSize: "120%" }}
                             animate={{ opacity: 1, backgroundSize: "110%" }}
-                            exit={{ opacity: 0, backgroundSize: "100%"  }}
+                            exit={{ opacity: 0, backgroundSize: "100%" }}
                             transition={{ duration: 0.6, ease: "easeOut" }}
                         ></S.CoverPhotoAbs>
                     </AnimatePresence>
@@ -81,7 +86,9 @@ function Cards() {
                 <Filter
                     tipoActividad={tipoActividad}
                     selectedCategory={selectedCategory}
+                    selectedDate={selectedDate}
                     onChangeCategory={(value) => setSelectedCategory(value)}
+                    onChangeDate={(value) => setSelectedDate(value)}
                 />
                 <S.Wrapper>
                     {getData.loading ? (

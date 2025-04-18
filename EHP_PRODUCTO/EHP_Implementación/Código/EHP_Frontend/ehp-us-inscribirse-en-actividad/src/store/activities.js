@@ -1,5 +1,6 @@
 import axios from "axios";
 import { create } from "zustand";
+import dayjs from "dayjs";
 
 const initialState = {
     loading: false,
@@ -24,9 +25,17 @@ export const useActivitiesStore = create((set) => ({
             set({...initialState, error: true, errorData: err.message})
         }
     },
-    filterActivities(category) {
+    filterActivities(category, date) {
         set((state) => {
-            if(category) {
+            if(category && date) {
+                return {
+                    filteredActivities: [
+                        ...state.data.filter(
+                            (x) => x.nombre === category && dayjs(x.fecha_inicio).isSame(date, "day")
+                        )
+                    ]
+                }
+            } else if(category) {
                 return {
                     filteredActivities: [
                         ...state.data.filter(

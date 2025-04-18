@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Main = styled.section`
     min-height: 100vh;
     position: relative;
+    margin-bottom: 30px;
 `
 
 const Wrapper = styled.section`
@@ -15,7 +16,7 @@ const Wrapper = styled.section`
 
 const Container = styled.div`
     display: flex;
-    gap: 10px;
+    gap: 20px;
     flex-wrap: wrap;
     padding-left: 25px;
     padding-right: 25px;
