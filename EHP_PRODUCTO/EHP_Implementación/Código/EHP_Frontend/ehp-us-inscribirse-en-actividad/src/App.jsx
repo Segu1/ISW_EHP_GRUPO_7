@@ -11,8 +11,8 @@ function App() {
         <>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path ="/actividades" element={<Activities></Activities>}></Route>
-                <Route path="/actividadesv2" element={<Cards />} />
+                {/*<Route path ="/actividades" element={<Activities></Activities>}></Route>*/}
+                <Route path="/actividades" element={<Cards />} />
                 <Route path = "/actividades/:id" element={<Inscription></Inscription>}></Route>
             </Routes>
            {/*<Footer />*/}

@@ -7,6 +7,9 @@ import Navbar from "../../Components/Navbar";
 import { useState } from "react";
 import { I } from "../../assets/img";
 import { AnimatePresence } from "motion/react";
+import dayjs from "dayjs";
+import { Modal } from "antd";
+import { useNavigate } from "react-router";
 
 const tipoActividad = [
     {
@@ -28,11 +31,15 @@ const tipoActividad = [
 ];
 
 function Cards() {
+    const navigate = useNavigate();
     const getData = useActivitiesStore();
     const [dataLoaded, setDataLoaded] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(
         tipoActividad[0].value
     );
+    const [selectedDate, setSelectedDate] = useState(dayjs());
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedActivity, setSelectedActivity] = useState({});
 
     const imageByCategory = (category) => {
         switch (category) {
@@ -57,10 +64,10 @@ function Cards() {
     }, []);
 
     useEffect(() => {
-        if (dataLoaded && selectedCategory) {
-            getData.filterActivities(selectedCategory);
+        if (dataLoaded && (selectedCategory || selectedDate)) {
+            getData.filterActivities(selectedCategory, selectedDate);
         }
-    }, [dataLoaded, selectedCategory]);
+    }, [dataLoaded, selectedCategory, selectedDate]);
 
     return (
         <>
@@ -73,7 +80,7 @@ function Cards() {
                             imageURL={imageByCategory(selectedCategory)}
                             initial={{ opacity: 0, backgroundSize: "120%" }}
                             animate={{ opacity: 1, backgroundSize: "110%" }}
-                            exit={{ opacity: 0, backgroundSize: "100%"  }}
+                            exit={{ opacity: 0, backgroundSize: "100%" }}
                             transition={{ duration: 0.6, ease: "easeOut" }}
                         ></S.CoverPhotoAbs>
                     </AnimatePresence>
@@ -81,7 +88,9 @@ function Cards() {
                 <Filter
                     tipoActividad={tipoActividad}
                     selectedCategory={selectedCategory}
+                    selectedDate={selectedDate}
                     onChangeCategory={(value) => setSelectedCategory(value)}
+                    onChangeDate={(value) => setSelectedDate(value)}
                 />
                 <S.Wrapper>
                     {getData.loading ? (
@@ -107,9 +116,40 @@ function Cards() {
                                         fecha_inicio={fecha_inicio}
                                         fecha_fin={fecha_fin}
                                         inscriptos={inscriptos}
+                                        onClick={() => {
+                                            setSelectedActivity({
+                                                id,
+                                                cupos,
+                                                nombre,
+                                                fecha_inicio,
+                                                fecha_fin,
+                                                inscriptos,
+                                            });
+                                            setIsModalOpen(true);
+                                        }}
                                     />
                                 )
                             )}
+                            <Modal
+                                title={selectedActivity?.nombre ?? "Actividad"}
+                                centered
+                                open={isModalOpen}
+                                onCancel={() => {
+                                    setIsModalOpen(false);
+                                    setSelectedActivity(null);
+                                }}
+                                cancelText={"Cerrar"}
+                                okText={"Inscribirse"}
+                                onOk={() => {
+                                    navigate(`/actividades/${selectedActivity.id}`)
+                                }}
+                            >
+                                {selectedActivity && (
+                                    <div>
+                                        <p>{selectedActivity.cupos}</p>
+                                    </div>
+                                )}
+                            </Modal>
                         </S.Container>
                     )}
                 </S.Wrapper>

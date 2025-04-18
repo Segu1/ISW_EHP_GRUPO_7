@@ -8,6 +8,7 @@ export default function Card({
     fecha_inicio,
     fecha_fin,
     inscriptos,
+    onClick
 }) {
     const fechaDesde = new Date(fecha_inicio);
     const fechaFin = new Date(fecha_fin);
@@ -21,12 +22,18 @@ export default function Card({
 
     return (
         <>
-            <S.Box>
-                <p>{nombre}</p>
-                <p>{cupos}</p>
-                <p>{fecha_inicio}</p>
-                <p>{fecha_fin}</p>
-                <p>{inscriptos}</p>
+            <S.Box onClick={onClick}>
+                <S.TitleActivity>
+                    <h1 className="font-oswald">{nombre}</h1>
+                </S.TitleActivity>
+                <S.InfoActivity>
+                    <div>
+                        Cupos: {inscriptos}/{cupos}
+                    </div>
+                    <div>
+                        {getHoraInicio}:{getMinInicio} - {getHoraFin}:{getMinFin}
+                    </div>
+                </S.InfoActivity>
             </S.Box>
         </>
     );

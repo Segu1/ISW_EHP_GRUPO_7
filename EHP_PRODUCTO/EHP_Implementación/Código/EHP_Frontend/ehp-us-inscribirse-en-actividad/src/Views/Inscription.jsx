@@ -33,7 +33,7 @@ function Inscription() {
 
   return (
     <>
-      <Navbar site="Inscripción actividad"></Navbar>
+      <Navbar site="Inscripción actividad" back={true}></Navbar>
       <div className="flex w-full font-serif items-center justify-center mb-10">
         <form
           onSubmit={handleSubmit(onSubmit)}
