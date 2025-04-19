@@ -33,9 +33,9 @@ routerInscripciones.post('/', async (req, res) => {
   const cantidadInscriptos = await gestorInscripciones.contar_inscriptos(actividadId);
   const cuposDisponibles = actividadExiste.cupos - cantidadInscriptos;
   
-  console.log("Cupos disponibles y actividad ID:", cuposDisponibles, actividadId);
+  console.log("Cupos disponibles, actividad ID, gente a inscribirse:", cuposDisponibles, actividadId, personas.length);
 
-  if (cuposDisponibles <= 0 || cantidadInscriptos >= actividadExiste.cupos) {
+  if (personas.length >= cuposDisponibles) {
     return res.status(409).json({ error: "No hay más cupos disponibles para esta actividad" });
   }
 
