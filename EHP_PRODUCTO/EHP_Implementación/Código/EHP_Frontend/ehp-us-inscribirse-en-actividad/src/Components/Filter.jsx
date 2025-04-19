@@ -25,6 +25,7 @@ function Filter({ tipoActividad, selectedCategory, selectedDate, onChangeCategor
                             disabledDate={disabledDate}
                             format="DD-MM-YYYY"
                             onChange={onChangeDate}
+                            allowClear={false}
                         />
                     </ConfigProvider>
                 </S.Container>

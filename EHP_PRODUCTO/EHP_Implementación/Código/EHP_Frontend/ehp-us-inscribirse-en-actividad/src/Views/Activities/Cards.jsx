@@ -1,15 +1,18 @@
 import { useEffect } from "react";
 import { S } from "../../assets/css/Cards.css";
 import { useActivitiesStore } from "../../store/activities";
-import Card from "./Card";
+//import Card from "./Card";
 import Filter from "../../Components/Filter";
 import Navbar from "../../Components/Navbar";
 import { useState } from "react";
 import { I } from "../../assets/img";
 import { AnimatePresence } from "motion/react";
 import dayjs from "dayjs";
-import { Modal } from "antd";
+import { Button, Modal, Skeleton } from "antd";
 import { useNavigate } from "react-router";
+import { Avatar } from "antd";
+import CardV2 from "./Card";
+import { Empty } from "antd";
 
 const tipoActividad = [
     {
@@ -93,65 +96,83 @@ function Cards() {
                     onChangeDate={(value) => setSelectedDate(value)}
                 />
                 <S.Wrapper>
-                    {getData.loading ? (
-                        <p>Cargando...</p>
-                    ) : getData.error ? (
-                        <p>Error fetching data: {getData.errorData}</p>
-                    ) : (
-                        //{"id":1,"nombre":"Tirolesa","cupos":10,"requiere_talla":false,"fecha_inicio":"2025-03-21T00:00:00.000Z","fecha_fin":"2025-03-22T00:00:00.000Z","inscriptos":0}
-                        <S.Container>
-                            {getData.filteredActivities?.map(
-                                ({
-                                    id,
-                                    cupos,
-                                    nombre,
-                                    fecha_inicio,
-                                    fecha_fin,
-                                    inscriptos,
-                                }) => (
-                                    <Card
-                                        key={id}
-                                        cupos={cupos}
-                                        nombre={nombre}
-                                        fecha_inicio={fecha_inicio}
-                                        fecha_fin={fecha_fin}
-                                        inscriptos={inscriptos}
-                                        onClick={() => {
-                                            setSelectedActivity({
+                    <div className="flex md:flex-nowrap flex-wrap w-full bg-gray-200 rounded-xl border-b-3 border-gray-300 h-150 p-2 gap-7">
+                        <div
+                            style={{
+                                "--image-url": `url(${imageByCategory(
+                                    selectedCategory
+                                )})`,
+                            }}
+                            className="md:w-1/2 w-full md:h-full h-1/3 bg-[image:var(--image-url)] bg-no-repeat bg-center bg-cover rounded-lg flex justify-center items-center"
+                        >
+                            <h1 className="rounded-xl w-full text-center text-[6vh] bg-neutral-900/50 text-amber-50 uppercase">{selectedCategory}</h1>
+                        </div>
+                        <div className="md:w-1/2 w-full md:h-full h-1/2">
+                            <div className="flex overflow-y-auto overflow-x-hidden md:max-h-[581px] max-h-[330px] flex-col gap-3 p-5 bg-gray-100 rounded-lg">
+                                {getData.loading ? (
+                                    <>
+                                        <Skeleton
+                                            active
+                                            paragraph={{
+                                                rows: 1,
+                                                width: "100%",
+                                            }}
+                                            title={false}
+                                        />
+                                        <Skeleton
+                                            active
+                                            paragraph={{
+                                                rows: 1,
+                                                width: "100%",
+                                            }}
+                                            title={false}
+                                        />
+                                        <Skeleton
+                                            active
+                                            paragraph={{
+                                                rows: 1,
+                                                width: "100%",
+                                            }}
+                                            title={false}
+                                        />
+                                    </>
+                                ) : getData.error ? (
+                                    <p>
+                                        Error fetching data: {getData.errorData}
+                                    </p>
+                                ) : (
+                                    getData.filteredActivities.length ? (
+                                        getData.filteredActivities?.map(
+                                            ({
                                                 id,
                                                 cupos,
                                                 nombre,
                                                 fecha_inicio,
                                                 fecha_fin,
                                                 inscriptos,
-                                            });
-                                            setIsModalOpen(true);
-                                        }}
-                                    />
-                                )
-                            )}
-                            <Modal
-                                title={selectedActivity?.nombre ?? "Actividad"}
-                                centered
-                                open={isModalOpen}
-                                onCancel={() => {
-                                    setIsModalOpen(false);
-                                    setSelectedActivity(null);
-                                }}
-                                cancelText={"Cerrar"}
-                                okText={"Inscribirse"}
-                                onOk={() => {
-                                    navigate(`/actividades/${selectedActivity.id}`)
-                                }}
-                            >
-                                {selectedActivity && (
-                                    <div>
-                                        <p>{selectedActivity.cupos}</p>
-                                    </div>
+                                            }) => (
+                                                <CardV2
+                                                    key={id}
+                                                    cupos={cupos}
+                                                    nombre={nombre}
+                                                    fecha_inicio={fecha_inicio}
+                                                    fecha_fin={fecha_fin}
+                                                    inscriptos={inscriptos}
+                                                    onClick={() => { navigate(
+                                                        `/actividades/${selectedActivity.id}`
+                                                    ) }}
+                                                />
+                                            )
+                                        )
+                                    ) : (
+                                        <div className="flex justify-center items-center">
+                                            <Empty description={false} image={I.image_empty} />
+                                        </div>
+                                    )
                                 )}
-                            </Modal>
-                        </S.Container>
-                    )}
+                            </div>
+                        </div>
+                    </div>
                 </S.Wrapper>
             </S.Main>
         </>

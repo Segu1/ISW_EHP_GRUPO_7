@@ -1,14 +1,13 @@
+import { RightCircleOutlined } from "@ant-design/icons";
 import { S } from "../../assets/css/Card.css";
 
-//"id":1,"nombre":"Tirolesa","cupos":10,"requiere_talla":false,"fecha_inicio":"2025-03-21T00:00:00.000Z"
-//{"id":1,"nombre":"Tirolesa","cupos":10,"requiere_talla":false,"fecha_inicio":"2025-03-21T00:00:00.000Z","fecha_fin":"2025-03-22T00:00:00.000Z","inscriptos":0}
 export default function Card({
     cupos,
     nombre,
     fecha_inicio,
     fecha_fin,
     inscriptos,
-    onClick
+    onClick,
 }) {
     const fechaDesde = new Date(fecha_inicio);
     const fechaFin = new Date(fecha_fin);
@@ -22,60 +21,38 @@ export default function Card({
 
     return (
         <>
-            <S.Box onClick={onClick}>
-                <S.TitleActivity>
-                    <h1 className="font-oswald">{nombre}</h1>
-                </S.TitleActivity>
-                <S.InfoActivity>
-                    <div>
-                        Cupos: {inscriptos}/{cupos}
+            <div className="flex justify-between items-center group bg-gray-200 p-3 cursor-pointer rounded-lg transition-all hover:scale-105" onClick={onClick}>
+                <div className="flex flex-col gap-2">
+                    <div >
+                        <span className="bg-gray-300 p-1 text-sm rounded-lg">
+                            {getHoraInicio}:{getMinInicio} - {getHoraFin}:{getMinFin}
+                        </span>
                     </div>
                     <div>
-                        {getHoraInicio}:{getMinInicio} - {getHoraFin}:{getMinFin}
+                        <span className="bg-gray-300 p-1 text-sm rounded-lg">
+                            {inscriptos}/{cupos}
+                        </span>
                     </div>
-                </S.InfoActivity>
-            </S.Box>
+                </div>
+                <div className="flex-none p-3 transition-all group-hover:scale-120">
+                    <RightCircleOutlined />
+                </div>
+            </div>
         </>
     );
 }
 
-{
-    /* 
-
-    <div className="font-mono relative bg-[#384252] shadow-2xl mb-4 rounded-md font-semibold w-full text-center p-1 hover:bg-[#8cd19d] hover:p-3">
-        <div className="text-[#ffffdd] group text-shadow-lg/20">
-            <p className="inline-block relative mr-50 bg-[#c0efd2] w-full rounded-2xl">
-                {nombre}
-            </p>
-            <p
-                className={`inline-block m-5 ${
-                    inscriptos <= cupos * 0.7
-                        ? "bg-[#d4f1db]"
-                        : "bg-red-300"
-                } rounded-xl p-2`}
-            >
+/*
+   <S.Box onClick={onClick}>
+        <S.TitleActivity>
+            <h1 className="font-oswald">{nombre}</h1>
+        </S.TitleActivity>
+        <S.InfoActivity>
+            <div>
                 Cupos: {inscriptos}/{cupos}
-            </p>
-            <p className="inline-block bg-[#d4f1db] rounded-xl p-2">
-                {getHoraInicio}:{getMinInicio} - {getHoraFin}:
-                {getMinFin}
-            </p>
-            {inscriptos <= cupos * 0.7 ? (
-                <p></p>
-            ) : (
-                <p className="p-1 group-hover:bg-[#384252] rounded-2xl m-2">
-                    Últimos lugares
-                </p>
-            )}
-        </div>
-    </div>
-
-    <S.Box>
-        <p>{nombre}</p>
-        <p>{cupos}</p>
-        <p>{fecha_inicio}</p>
-        <p>{fecha_fin}</p>
-        <p>{inscriptos}</p>
-    </S.Box>
-    */
-}
+            </div>
+            <div>
+                {getHoraInicio}:{getMinInicio} - {getHoraFin}:{getMinFin}
+            </div>
+        </S.InfoActivity>
+    </S.Box>  */
