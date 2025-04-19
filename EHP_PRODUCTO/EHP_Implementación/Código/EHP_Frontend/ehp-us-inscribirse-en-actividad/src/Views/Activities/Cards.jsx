@@ -159,7 +159,7 @@ function Cards() {
                                                     fecha_fin={fecha_fin}
                                                     inscriptos={inscriptos}
                                                     onClick={() => { navigate(
-                                                        `/actividades/${selectedActivity.id}`
+                                                        `/actividades/${id}`
                                                     ) }}
                                                 />
                                             )
