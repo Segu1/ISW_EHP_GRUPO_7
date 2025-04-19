@@ -24,6 +24,7 @@ routerInscripciones.post('/', async (req, res) => {
 
   // actividad existe?
   const actividadExiste = await gestorActividades.buscar_actividad(actividadId);
+  console.log("Actividad existe:", actividadExiste);
   if (!actividadExiste) {
     return res.status(400).json({ error: "Actividad no válida" });
   }
@@ -41,6 +42,11 @@ routerInscripciones.post('/', async (req, res) => {
 
   for (const persona of personas) {
     try {
+      // Validar talle de vestimenta requerido por la actividad
+      console.log("Validando talle de vestimenta:", actividadExiste.dataValues.requiere_talla ,persona.talla);
+      if (actividadExiste.dataValues.requiere_talla && !persona.talla) {
+        return res.status(400).json({ error: `El talle de vestimenta es obligatorio para la actividad ${actividadId}` });
+      }
       const talla = persona.talla || null;
       let visitante = await gestorVisitantes.buscar_visitanteSinPk(persona.dni);
 
