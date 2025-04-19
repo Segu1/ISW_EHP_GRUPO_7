@@ -188,6 +188,7 @@ function People(props) {
 
           {responseStatus == 201 ? <Alert message="Inscripción exitosa" type="success" showIcon /> : ""}
           {responseStatus == 409 ? <Alert message="Error" description="Los cupos de esa actividad estan llenos." type="error" showIcon/> : ""}
+          {responseStatus == 400 ? <Alert message="Error" description="La actividad requiere talle de vestimenta." type="error" showIcon/> : ""}
         </div>
       </form>
     </div>

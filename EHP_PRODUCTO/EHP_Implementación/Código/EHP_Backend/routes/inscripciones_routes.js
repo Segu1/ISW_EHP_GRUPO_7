@@ -36,7 +36,7 @@ routerInscripciones.post('/', async (req, res) => {
   
   console.log("Cupos disponibles, actividad ID, gente a inscribirse:", cuposDisponibles, actividadId, personas.length);
 
-  if (personas.length >= cuposDisponibles) {
+  if (personas.length > cuposDisponibles) {
     return res.status(409).json({ error: "No hay más cupos disponibles para esta actividad" });
   }
 
