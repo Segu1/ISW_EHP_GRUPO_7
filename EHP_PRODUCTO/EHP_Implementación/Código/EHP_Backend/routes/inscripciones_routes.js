@@ -22,6 +22,8 @@ routerInscripciones.post('/', async (req, res) => {
 
   const errores = [];
 
+  
+
   // actividad existe?
   const actividadExiste = await gestorActividades.buscar_actividad(actividadId);
   console.log("Actividad existe:", actividadExiste);
@@ -29,6 +31,14 @@ routerInscripciones.post('/', async (req, res) => {
     return res.status(400).json({ error: "Actividad no válida" });
   }
 
+  // Validar el horario de la actividad no sea en el pasado
+  const fechaActividad = new Date(actividadExiste.dataValues.fecha_inicio);
+  const fechaActual = new Date(Date.now());
+
+  console.log("Fecha actividad, fecha actual:", fechaActividad, fechaActual);
+  if (fechaActividad < fechaActual) {
+    return res.status(410).json({ error: "La actividad ya ha pasado" });
+  }
   // Validar cupos disponibles
 
   const cantidadInscriptos = await gestorInscripciones.contar_inscriptos(actividadId);
