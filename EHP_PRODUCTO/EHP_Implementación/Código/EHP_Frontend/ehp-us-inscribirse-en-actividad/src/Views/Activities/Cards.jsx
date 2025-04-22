@@ -41,8 +41,6 @@ function Cards() {
         tipoActividad[0].value
     );
     const [selectedDate, setSelectedDate] = useState(dayjs());
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedActivity, setSelectedActivity] = useState({});
 
     const imageByCategory = (category) => {
         switch (category) {
@@ -146,7 +144,6 @@ function Cards() {
                                             ({
                                                 id,
                                                 cupos,
-                                                nombre,
                                                 fecha_inicio,
                                                 fecha_fin,
                                                 inscriptos,
@@ -154,13 +151,14 @@ function Cards() {
                                                 <CardV2
                                                     key={id}
                                                     cupos={cupos}
-                                                    nombre={nombre}
                                                     fecha_inicio={fecha_inicio}
                                                     fecha_fin={fecha_fin}
                                                     inscriptos={inscriptos}
-                                                    onClick={() => { navigate(
-                                                        `/actividades/${id}`
-                                                    ) }}
+                                                    onClick={() => {
+                                                        if(!(new Date(fecha_fin) <= new Date() || cupos === inscriptos)) {
+                                                            navigate(`/actividades/${id}`)
+                                                        }                                                         
+                                                    }}
                                                 />
                                             )
                                         )
