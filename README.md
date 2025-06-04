@@ -3,3 +3,4 @@ Repositorio creado para el versionado de la materia ingeniería y calidad de sof
 
 # Integrantes
 69099 - Leandro Avram
+70790 - Rigalt Pablo
