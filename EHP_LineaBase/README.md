@@ -1,2 +1,0 @@
-# Criterio de línea base
-Se establecerá una línea base cada vez que se reciba el feedback del cliente y este esté satisfecho con la entrega, siempre que el equipo considere que la versión es completa y está libre de errores críticos.
